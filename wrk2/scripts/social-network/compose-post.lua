@@ -26,7 +26,7 @@ local function decRandom(length)
   end
 end
 
-request = function(userSize)
+request = function(userSize=962)
   local user_index = math.random(1, userSize)
   local username = "username_" .. tostring(user_index)
   local user_id = tostring(user_index)
