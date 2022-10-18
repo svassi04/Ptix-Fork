@@ -26,7 +26,10 @@ local function decRandom(length)
   end
 end
 
-request = function(userSize=962)
+request = function(userSize)
+	if not userSize then
+       userSize = 962--default value
+    end
   local user_index = math.random(1, userSize)
   local username = "username_" .. tostring(user_index)
   local user_id = tostring(user_index)
