@@ -18,6 +18,9 @@ sudo apt install python3.9
 
 sudo apt-get install python3-pip python-dev
 
+sudo python3 -m pip install -U pip
+sudo python3 -m pip install -U setuptools
+
 pip3 install asyncio
 pip3 install aiohttp
 #libssl
