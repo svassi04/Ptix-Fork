@@ -26,11 +26,8 @@ local function decRandom(length)
   end
 end
 
-request = function(userSize)
-	if not userSize then
-       userSize = 962--default value
-    end
-  local user_index = math.random(1, userSize)
+request = function()
+  local user_index = math.random(1, 962)
   local username = "username_" .. tostring(user_index)
   local user_id = tostring(user_index)
   local text = stringRandom(256)
@@ -43,7 +40,7 @@ request = function(userSize)
   for i = 0, num_user_mentions, 1 do
     local user_mention_id
     while (true) do
-      user_mention_id = math.random(1, userSize)
+      user_mention_id = math.random(1, 962)
       if user_index ~= user_mention_id then
         break
       end
