@@ -10,7 +10,7 @@ do
 else
 	
 	ssh node$i<<EOT
-	git clone https://github.com/aatana01/Ptix.git
+	git clone https://github.com/svassi04/Ptix-Fork.git
 	cd Ptix
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
