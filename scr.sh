@@ -22,7 +22,8 @@ fi
 done
 sudo docker stack deploy --compose-file=docker-compose-swarm.yml SocialNetwork
 
-ssh  node$i "cd Ptix-Fork;
+ssh  node$i "git clone https://github.com/svassi04/Ptix-Fork.git;
+cd Ptix-Fork;
 chmod +x scr_work.sh;
 yes Y|./scr_work.sh;
 sudo$variable;
