@@ -1,6 +1,7 @@
 local socket = require("socket")
 local time = socket.gettime()*1000
-math.randomseed(time)
+--math.randomseed(time)
+math.randomseed(1000)
 math.random(); math.random(); math.random()
 
 local charset = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's',
