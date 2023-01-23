@@ -1,6 +1,7 @@
 
 #!/bin/bash
 o=$1
+rm myOutput
 for (( c=0 ; c<$1 ; c++ ));
 do
         for (( i=0 ; i<1 ; i++ ));
