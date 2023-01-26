@@ -7,8 +7,6 @@ do
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
 	variable=`cat file |  grep "docker swarm join --token"`
-	cd wrk2
-	make
 else
 	
 	ssh node$i<<EOT
@@ -17,8 +15,6 @@ else
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
 	sudo$variable
-	cd wrk2
-	make
 EOT
 	
 	
@@ -31,16 +27,10 @@ cd Ptix-Fork;
 chmod +x scr_work.sh;
 yes Y|./scr_work.sh;
 sudo$variable;
-git clone https://github.com/hvolos/profiler.git
-cd wrk2;
-make;"
-python3 scripts/init_social_graph.py --graph=socfb-Reed98;
+git clone https://github.com/hvolos/profiler.git"
+#python3 scripts/init_social_graph.py --graph=socfb-Reed98;
 #cd wrk2;
 #make;
-ssh  node$i "chmod +x run_post.sh;
-run_post.sh 1
-"
-
 
 
 
