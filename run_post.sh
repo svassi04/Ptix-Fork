@@ -5,7 +5,7 @@ rm myOutputPost
 # $1 how far to go (100, 200, 300...)
 for (( c=0 ; c<$1 ; c++ ));
 do
-        for (( i=0 ; i<10 ; i++ ));
+        for (( i=0 ; i<5 ; i++ ));
         do
  #               python3 ./profiler/profiler.py -n node$c start
 #done

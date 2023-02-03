@@ -4,7 +4,7 @@ o=$1
 rm myOutput
 for (( c=0 ; c<$1 ; c++ ));
 do
-        for (( i=0 ; i<10 ; i++ ));
+        for (( i=0 ; i<5 ; i++ ));
         do
  #               python3 ./profiler/profiler.py -n node$c start
 #done
