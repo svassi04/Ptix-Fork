@@ -29,7 +29,7 @@ sudo apt-get install libssl-dev
 #libz
 sudo apt-get install libz-dev
 
-sudo apt-get install luarocks
+sudo apt-get install luarocks -y
 
 sudo luarocks install luasocket
 
