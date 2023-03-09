@@ -2,7 +2,8 @@
 
 for (( i=0 ; i<$1 ; i++ )); 
 do
-	
+	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
+
     if [ $i -eq 0 ]; then
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
@@ -10,6 +11,8 @@ do
 else
 	
 	ssh node$i<<EOT
+	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
+
 	git clone https://github.com/svassi04/Ptix-Fork.git
 	cd Ptix-Fork
 	chmod +x scr_work.sh
