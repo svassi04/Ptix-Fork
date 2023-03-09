@@ -17,8 +17,8 @@ sudo apt-get install python3-pip python-dev
 sudo python3 -m pip install -U pip
 sudo python3 -m pip install -U setuptools
 
-pip3 install asyncio
-pip3 install aiohttp
+sudo pip3 install asyncio
+sudo pip3 install aiohttp
 #libssl
 sudo apt-get install libssl-dev
 
