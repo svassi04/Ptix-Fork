@@ -33,7 +33,7 @@ do
         for (( i=0 ; i<5 ; i++ ));
         do
                 d=$(($(($c+1))*100))
-				python3 ./profiler/analyze.py ~/temp/node0/qps$d/repeat$i/ 0 39 30 >> output/cstateAv
+				python3 ./profiler/analyze.py ~/temp/node0/qps$d/repeat$i/ 0 19 30 >> output/cstateAv
 				cat ~/temp/node0/qps$d/repeat$i/dram >> output/power
 				cat ~/temp/node0/qps$d/repeat$i/package-0 >> output/power
 				cat ~/temp/node0/qps$d/repeat$i/package-1 >> output/power
