@@ -132,6 +132,8 @@ def main(argv):
     experiment_time_duration_us = int(argv[4])*1000000
     stats = parse_cstate_stats(stats_root_dir)
     p = avg_state_time_perc(stats, range(cpu_range_begin, cpu_range_end_exclusive), experiment_time_duration_us)
+    tran = avg_state_usage(stats, range(cpu_range_begin, cpu_range_end_exclusive))
+    print(tran)
     print(p)
 
 if __name__ == '__main__':
