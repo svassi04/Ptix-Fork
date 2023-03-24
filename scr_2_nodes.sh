@@ -23,7 +23,7 @@ EOT
 	
 fi
 done
-sudo docker stack deploy --compose-file=docker-compose-swarm_2_nodes.yml SocialNetwork
+sudo docker stack deploy --compose-file=docker-compose-swarm-2nodes.yml SocialNetwork
 
 ssh  node$i "git clone https://github.com/svassi04/Ptix-Fork.git;
 cd Ptix-Fork;
