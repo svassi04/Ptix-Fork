@@ -35,7 +35,7 @@ for (( c=0 ; c<$1 ; c++ ));
 do
         for (( i=0 ; i<5 ; i++ ));
         do
-                d=$(($(($c+1))*100
+                d=$(($(($c+1))*100))
 				python3 ./profiler/analyze.py ~/temp/node0/qps$d/repeat$i/ 0 20 30 >> output/cstateAv
 				cat ~/temp/node0/qps$d/repeat$i/dram >> output/power
 				cat ~/temp/node0/qps$d/repeat$i/package-0 >> output/power
@@ -50,4 +50,19 @@ do
         done
 		echo 'repeat end' >> output/cstateAv
 		echo 'repeat end' >> output/power
+done
+
+
+for (( c=0 ; c<$1 ; c++ ));
+do
+        for (( j=0 ; j<20 ; j++ ));
+        do
+                l=$(($j+1))
+                for (( i=0 ; i<5 ; i++ ));
+                do
+                        d=$(($(($c+1))*100))
+                        python3 ./profiler/analyze.py ~/temp/node0/qps$d/repeat$i/ $j $l 30 >> output/cpuCState
+                done
+
+        done
 done
