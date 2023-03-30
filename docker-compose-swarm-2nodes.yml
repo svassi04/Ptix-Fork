@@ -533,6 +533,8 @@ services:
   jaeger-collector:
     image: jaegertracing/jaeger-collector
     deploy:
+      restart_policy:
+        condition: any
       placement:
         constraints:
           - node.hostname==${NODE1}
@@ -546,15 +548,14 @@ services:
       ]
     ports:
       - "14269:14269"
-    deploy:
-      restart_policy:
-        condition: any
     depends_on:
       - cassandra-schema
 
   jaeger-query:
     image: jaegertracing/jaeger-query
     deploy:
+      restart_policy:
+        condition: any
       placement:
         constraints:
           - node.hostname==${NODE1}
@@ -562,9 +563,6 @@ services:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
       - "16686:16686"
-    deploy:
-      restart_policy:
-        condition: any
     depends_on:
       - cassandra-schema
 
@@ -573,13 +571,12 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    placement:
+        constraints:
+          - node.hostname==${NODE1}    
     depends_on:
       - cassandra
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==${NODE1}
-
+    
   cassandra:
     image: cassandra:3.9
     deploy:
