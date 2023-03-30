@@ -2,11 +2,13 @@
 
 for (( i=0 ; i<$1 ; i++ )); 
 do
-	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
+	export NODE$i=`ssh node$i hostname`
 
     if [ $i -eq 0 ]; then
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
+	
 	variable=`cat file |  grep "docker swarm join --token"`
 else
 	

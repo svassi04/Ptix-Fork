@@ -154,10 +154,11 @@ x = qps[0:10]
 #x = np.array(x)
 y = TailLatency[0:10]
 z = AvLatency[0:10]
+
 ax.plot(qps[0:8], TailLatencyAv[0:8], marker="o", markersize=4, markeredgecolor="green", markerfacecolor="green", label="qps/tail latency (99th)")
 ax.plot(qps[0:8], AvLatencyAv[0:8], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/average latency")
-ax.bar(qpsbar[0:40], TailLatency[0:40], width=5.0, edgecolor = "black")
-ax.bar(qpsbar[0:40], AvLatency[0:40], width=5.0, edgecolor = "black")
+ax.bar(qpsbar[0:38], TailLatency[0:38], width=5.0, edgecolor = "black")
+ax.bar(qpsbar[0:38], AvLatency[0:38], width=5.0, edgecolor = "black")
 ax.legend(loc="upper left")
 
 plt.show()
@@ -263,8 +264,8 @@ plt.rcParams["figure.autolayout"] = True
 
 ax.plot(qps[0:8], totalreqAv[0:8], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total executed requests")
 ax.plot(qps[0:8], dropedreqAv[0:8], marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/total dropped requests")
-ax.bar(qpsbar[0:40], totalreq[0:40], width=5.0, edgecolor = "black")
-ax.bar(qpsbar[0:40], dropedreq[0:40], color="orange", width=5.0, edgecolor = "black")
+ax.bar(qpsbar[0:38], totalreq[0:38], width=5.0, edgecolor = "black")
+ax.bar(qpsbar[0:38], dropedreq[0:38], color="orange", width=5.0, edgecolor = "black")
 ax.legend(loc="upper left")
 
 plt.show()
@@ -438,13 +439,148 @@ plt.show()
 
 
 
-import numpy as np
-import csv
-import matplotlib.pyplot as plt
-import pandas as pd
-from glob import glob
 
-qpsRate=1
+
+
+
+
+
+
+
+
+
+
+
+for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/power"):
+    f=open(name, "r")
+#f=open("power.txt", "r")
+#next(f)
+#next(f)
+#next(f)
+data_array2 = []
+for row in csv.reader(f):
+    data_array2.append(row)
+    
+    #for item in row:
+        #item = item.split()
+        #data_array2.append(item)
+
+#print(data_array2)
+
+dram = []
+package0 = []
+package1 = []
+
+for i in range(len(data_array2)):
+    if (len(package1)==50):
+        break
+    if(data_array2[i][0]=="dram"):
+        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
+        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
+        dram.append(t1/t2/1000000)
+    if(data_array2[i][0] == "package-0"):
+        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
+        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
+        package0.append(t1/t2/1000000)
+    if(data_array2[i][0] == "package-1"):
+        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
+        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
+        package1.append(t1/t2/1000000)
+
+
+#print(len(dram), len(package0), len(package1), "\n")
+print("dram:",  dram, "\n\npackage0:", package0, "\n\npackage1:", package1)
+
+
+y1 = np.array(dram)
+y2 = np.array(package0)
+y3 = np.array(package1)
+ 
+# plot bars in stack manner
+plt.bar(x, y1, color='r', width=qpsRate)
+plt.bar(x, y2, bottom=y1, color='b', width=qpsRate)
+plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate)
+plt.xlabel("qps")
+plt.ylabel("Power consumption in W")
+plt.legend(['dram', 'package0', 'package1'])
+plt.title("Power consumption in W relative to qps")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -544,7 +680,7 @@ plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate*2)
 plt.xlabel("qps")
 plt.ylabel("Time percentage(%) out of 30 sec in each C-state")
 plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("Time percentage(%) out of 30 sec, in each C-state relative to qps")
+plt.title("Time percentage(%) out of 30 sec, in each C-state, for each core, relative to qps")
 plt.show()
 
 y1 = np.array(c0t)
@@ -560,7 +696,7 @@ plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate*2)
 plt.xlabel("qps")
 plt.ylabel("CState transitions in 30 sec in each C-state")
 plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("CState transitions in 30 sec, in each C-state relative to qps")
+plt.title("CState transitions in 30 sec, in each C-state, for each core, relative to qps")
 plt.show()
 
 
@@ -598,57 +734,3 @@ plt.show()
 
 
 
-for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/power"):
-    f=open(name, "r")
-#f=open("power.txt", "r")
-#next(f)
-#next(f)
-#next(f)
-data_array2 = []
-for row in csv.reader(f):
-    data_array2.append(row)
-    
-    #for item in row:
-        #item = item.split()
-        #data_array2.append(item)
-
-#print(data_array2)
-
-dram = []
-package0 = []
-package1 = []
-
-for i in range(len(data_array2)):
-    if (len(package1)==50):
-        break
-    if(data_array2[i][0]=="dram"):
-        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
-        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
-        dram.append(t1/t2/1000000)
-    if(data_array2[i][0] == "package-0"):
-        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
-        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
-        package0.append(t1/t2/1000000)
-    if(data_array2[i][0] == "package-1"):
-        t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
-        t2=float(data_array2[i+1][0])-float(data_array2[i+2][0])
-        package1.append(t1/t2/1000000)
-
-
-#print(len(dram), len(package0), len(package1), "\n")
-#print("dram:",  dram, "\n\npackage0:", package0, "\n\npackage1:", package1)
-
-
-y1 = np.array(dram)
-y2 = np.array(package0)
-y3 = np.array(package1)
- 
-# plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate)
-plt.xlabel("qps")
-plt.ylabel("Power consumption in W")
-plt.legend(['dram', 'package0', 'package1'])
-plt.title("Power consumption in W relative to qps")
-plt.show()
