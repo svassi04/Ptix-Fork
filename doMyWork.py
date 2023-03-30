@@ -59,8 +59,8 @@ for i in range(len(data_array)):
         totalreq.append(float(data_array[i][0]))
     if(data_array[i][0]== "Requests/sec:"):
         reqpersec.append(float(data_array[i][1]))
-print(len(AvLatency), len(TailLatency), len(reqpersec), len(totalreq), "\n")
-print("AvLatency:", AvLatency, "\n\nTailLatency:", TailLatency, "\n\nreqpersec:", reqpersec, "\n\ntotalreq:", totalreq)
+#print(len(AvLatency), len(TailLatency), len(reqpersec), len(totalreq), "\n")
+#print("AvLatency:", AvLatency, "\n\nTailLatency:", TailLatency, "\n\nreqpersec:", reqpersec, "\n\ntotalreq:", totalreq)
 l=0
 #plt.plot(AvLatency,reqpersec)
 for i in range(qpsRate*100,qpsRate*1100,qpsRate*100):
@@ -83,7 +83,7 @@ dropedtmp=0
 for i in range(0,10):
     for j in range(0,5):
         l=i*5+j
-        print("\n\n", l)
+        #print("\n\n", l)
         Avtmp+=AvLatency[l]
         Tailtmp+=TailLatency[l]
         reqtmp+=reqpersec[l]
@@ -377,9 +377,9 @@ for i in range(len(data_array1)):
         
         
 #print(len(data_array1[0]))
-print(len(c0), len(c1), len(c1e), len(c6), "\n")
+#print(len(c0), len(c1), len(c1e), len(c6), "\n")
 #print("c0:",  c0, "\n\nc1:", c1, "\n\nc1e:", c1e, "\n\nc6:", c6)"
-print((x))
+#print((x))
 
 # data from https://allisonhorst.github.io/palmerpenguins/
 
@@ -489,7 +489,7 @@ for i in range(len(data_array2)):
 
 
 #print(len(dram), len(package0), len(package1), "\n")
-print("dram:",  dram, "\n\npackage0:", package0, "\n\npackage1:", package1)
+#print("dram:",  dram, "\n\npackage0:", package0, "\n\npackage1:", package1)
 
 
 y1 = np.array(dram)
@@ -618,9 +618,9 @@ tc6 = [0] * 200
 j=0
 
 
-print(len(data_array1))
+#print(len(data_array1))
 for i in range(0, len(data_array1), 10):
-    print(j)
+    #print(j)
     for q in range(0,10):
         if(len(data_array1[i+q]) == 4):
             if(float(str(data_array1[i+q][0]).replace("[","").replace(",",""))>1.00):
@@ -632,36 +632,25 @@ for i in range(0, len(data_array1), 10):
                 tc0[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
                 tc1[j]+=(float(str(data_array1[i+q][1]).replace(",","")))
                 tc1e[j]+=(float(str(data_array1[i+q][2]).replace(",","")))
-                tem=float(str(data_array1[i+q][3]).replace("]",""))
-                if (tem>=0):
-                    tc6[j]=(tem)
-                else :
-                    tc6[j]=(0)
-                    tc0[j]-=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
-                    tc1[j]-=(float(str(data_array1[i+q][1]).replace("[","").replace(",","")))
-                    tc1e[j]-=(float(str(data_array1[i+q][2]).replace("[","").replace(",","")))
-                    t=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
-                    tc0[j]=(float(t)*(1.00+tem))
-                    t=(float(str(data_array1[i+q][1]).replace("[","").replace(",","")))
-                    tc1[j]=(float(t)*(1.00+tem))
-                    t=(float(str(data_array1[i+q][2]).replace("[","").replace(",","")))
-                    tc1e[j]=(float(t)*(1.00+tem))    
+                tc6[j]+=(float(str(data_array1[i+q][3]).replace("]","")))
+                    
+    print(tc0[j], " ", tc1[j], " ", tc1e[j], " ", tc6[j])
     c0t.append(tc0t[j]/5)
     c1t.append(tc1t[j]/5)
     c1et.append(tc1et[j]/5)
     c6t.append(tc6t[j]/5)
-    c0.append(tc0[j]*(100/(tc0[j]+tc1[j]+tc1e[j]+tc6[j])))
-    c1.append(tc1[j]*(100/(tc0[j]+tc1[j]+tc1e[j]+tc6[j])))
-    c1e.append(tc1e[j]*(100/(tc0[j]+tc1[j]+tc1e[j]+tc6[j])))
-    c6.append(tc6[j]*(100/(tc0[j]+tc1[j]+tc1e[j]+tc6[j])))
+    c0.append(tc0[j]/5*(100))
+    c1.append(tc1[j]/5*(100))
+    c1e.append(tc1e[j]/5*(100))
+    c6.append(tc6[j]/5*(100))
     x.append(int(int(j)/20+1)*qpsRate*100+j%20*4*qpsRate)
     j+=1
         
         
 #print(len(data_array1[0]))
-print(len(c0), len(c1), len(c1e), len(c6), "\n")
+#print(len(c0), len(c1), len(c1e), len(c6), "\n")
 #print("c0:",  c0, "\n\nc1:", c1, "\n\nc1e:", c1e, "\n\nc6:", c6)"
-print((x))
+#print((x))
 
 # data from https://allisonhorst.github.io/palmerpenguins/
 
