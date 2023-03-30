@@ -2,7 +2,7 @@
 
 for (( i=0 ; i<$1 ; i++ )); 
 do
-	export NODE$i=`ssh node$i hostname`
+	export NODE$i=$(ssh node$i hostname)
 
     if [ $i -eq 0 ]; then
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
