@@ -135,7 +135,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: [node.hostname == $(NODE1)]
+        constraints: ["node.hostname == ${NODE1}"]
       replicas: 1
       restart_policy:
         condition: any
@@ -424,7 +424,7 @@ services:
       - "14269:14269"
     deploy:
       placement:
-        constraints: [node.hostname == $(NODE0)]
+        constraints: ["node.hostname == ${NODE0}"]
       restart_policy:
         condition: any
     depends_on:
@@ -451,7 +451,7 @@ services:
     image: cassandra:3.9
     deploy:
       placement:
-        constraints: [node.hostname == $(NODE0)]
+        constraints: ["node.hostname == ${NODE0}"]
 
 networks:
   default:

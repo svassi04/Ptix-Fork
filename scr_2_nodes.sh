@@ -1,9 +1,12 @@
 #!/bin/bash 
 
+export NODE0=$(ssh node0 hostname)
+echo $NODE0
+export NODE1=$(ssh node1 hostname)
+echo $NODE1
+
 for (( i=0 ; i<$1 ; i++ )); 
 do
-	export NODE$i=$(ssh node$i hostname)
-	echo $(NODE$i)
     if [ $i -eq 0 ]; then
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	chmod +x scr_master.sh
