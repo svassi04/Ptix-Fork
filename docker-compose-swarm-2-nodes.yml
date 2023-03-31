@@ -1,4 +1,3 @@
-
 version: "3.8"
 
 services:
@@ -22,12 +21,8 @@ services:
     deploy:
       restart_policy:
         condition: any
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     depends_on:
       - jaeger-collector
-
   compose-post-service:
     depends_on:
       - jaeger-agent
@@ -36,35 +31,26 @@ services:
       replicas: 1
       restart_policy:
         condition: any
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
       resources:
         limits:
           cpus: "1"
-          memory: 1G    
+          memory: 1G
     command: ["ComposePostService"]
     hostname: compose-post-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   home-timeline-redis:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: home-timeline-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   home-timeline-service:
     depends_on:
       - jaeger-agent
@@ -77,16 +63,12 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   media-frontend:
     depends_on:
       - jaeger-agent
@@ -99,9 +81,6 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     hostname: media-frontend
     image: yg397/media-frontend:xenial
     ports:
@@ -109,15 +88,10 @@ services:
     volumes:
       - ./media-frontend/lua-scripts:/usr/local/openresty/nginx/lua-scripts
       - ./media-frontend/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
-
   media-memcached:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: media-memcached
     image: memcached
     command:
@@ -125,15 +99,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
-
   media-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: media-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -141,7 +110,6 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   media-service:
     depends_on:
       - media-mongodb
@@ -155,21 +123,19 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["MediaService"]
     hostname: media-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   nginx-web-server:
     depends_on:
       - jaeger-agent
       - jaeger-query
     deploy:
+      placement:
+        constraints: [node.hostname == $(NODE1)]
       replicas: 1
       restart_policy:
         condition: any
@@ -177,9 +143,6 @@ services:
         limits:
           cpus: "4"
           memory: 4G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -192,15 +155,10 @@ services:
       - ./gen-lua:/gen-lua
       - ./docker/openresty-thrift/lua-thrift:/usr/local/openresty/lualib/thrift
       - ./keys:/keys
-
   post-storage-memcached:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: post-storage-memcached
     image: memcached
     command:
@@ -208,15 +166,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
-
   post-storage-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: post-storage-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -224,7 +177,6 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   post-storage-service:
     depends_on:
       - post-storage-mongodb
@@ -238,24 +190,16 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   social-graph-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: social-graph-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -263,22 +207,16 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   social-graph-redis:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: social-graph-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   social-graph-service:
     depends_on:
       - jaeger-agent
@@ -292,16 +230,12 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   text-service:
     depends_on:
       - jaeger-agent
@@ -314,16 +248,12 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["TextService"]
     hostname: text-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   unique-id-service:
     depends_on:
       - jaeger-agent
@@ -336,24 +266,16 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   url-shorten-memcached:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: url-shorten-memcached
     image: memcached
     command:
@@ -361,15 +283,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
-
   url-shorten-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: url-shorten-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -377,7 +294,6 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   url-shorten-service:
     depends_on:
       - url-shorten-mongodb
@@ -391,24 +307,16 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-memcached:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: user-memcached
     image: memcached
     command:
@@ -416,7 +324,6 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
-
   user-mention-service:
     depends_on:
       - jaeger-agent
@@ -429,24 +336,16 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: user-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -454,7 +353,6 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-service:
     depends_on:
       - user-mongodb
@@ -468,24 +366,16 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==$(NODE0)
     command: ["UserService"]
     hostname: user-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-timeline-mongodb:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: user-timeline-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -493,22 +383,16 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-timeline-redis:
     depends_on:
       - jaeger-agent
       - jaeger-query
-    deploy:
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     hostname: user-timeline-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
-
   user-timeline-service:
     depends_on:
       - user-timeline-mongodb
@@ -521,23 +405,13 @@ services:
         limits:
           cpus: "1"
           memory: 1G
-      placement:
-        constraints:
-          - node.hostname==node0
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: yg397/social-network-microservices:latest
     volumes:
       - ./config:/social-network-microservices/config
-
   jaeger-collector:
     image: jaegertracing/jaeger-collector
-    deploy:
-      restart_policy:
-        condition: any
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -548,41 +422,36 @@ services:
       ]
     ports:
       - "14269:14269"
-    depends_on:
-      - cassandra-schema
-
-  jaeger-query:
-    image: jaegertracing/jaeger-query
     deploy:
+      placement:
+        constraints: [node.hostname == $(NODE0)]
       restart_policy:
         condition: any
-      placement:
-        constraints:
-          - node.hostname==$(NODE1)
+    depends_on:
+      - cassandra-schema
+  jaeger-query:
+    image: jaegertracing/jaeger-query
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
       - "16686:16686"
+    deploy:
+      restart_policy:
+        condition: any
     depends_on:
       - cassandra-schema
-
   cassandra-schema:
     image: jaegertracing/jaeger-cassandra-schema
     deploy:
       restart_policy:
         condition: on-failure
-    placement:
-        constraints:
-          - node.hostname==$(NODE1)    
     depends_on:
       - cassandra
-    
   cassandra:
     image: cassandra:3.9
     deploy:
       placement:
-        constraints:
-          - node.hostname==$(NODE1)
+        constraints: [node.hostname == $(NODE0)]
 
 networks:
   default:
@@ -591,4 +460,3 @@ networks:
       driver: default
       config:
         - subnet: 10.11.0.0/16
-
