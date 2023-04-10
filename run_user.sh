@@ -76,6 +76,6 @@ do
 
                 done
         done
-        echo node$a >> microserviceDistripution
-        ssh node$a docker ps >> microserviceDistripution
+        echo node$a >> output/microserviceDistripution
+        ssh node$a docker ps >> output/microserviceDistripution
 done
