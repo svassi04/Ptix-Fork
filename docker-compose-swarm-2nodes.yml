@@ -23,7 +23,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     depends_on:
       - jaeger-collector
 
@@ -510,7 +510,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -530,7 +530,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
