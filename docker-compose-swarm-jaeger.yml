@@ -169,8 +169,8 @@ services:
         limits:
           cpus: "4"
           memory: 4G
-      placement:
-        constraints: ["node.hostname == ${NODE0}"]
+     # placement:
+      #  constraints: ["node.hostname == ${NODE0}"]
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
