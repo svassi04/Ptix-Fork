@@ -496,8 +496,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints:
-          - node.hostname==node0
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: yg397/social-network-microservices:latest
