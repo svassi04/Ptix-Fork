@@ -5,9 +5,10 @@ from glob import glob
 #import os
 #print (glob("/output/*/", recursive = True))
 qpsRate=1
+nodes=2
 
 
-for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/runData"):
+for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -27,197 +28,199 @@ TailLatency = []
 reqpersec = []
 totalreq = []
 dropedreq = []
-for i in range(len(data_array)):
-    if(data_array[i][0]=="Latency" and data_array[i][1]!="Distribution"):
-        if (data_array[i][1]!="-nanus"):
-            tmp = str(data_array[i][1])
-            if(tmp.find("ms")!=-1):
-                AvLatency.append(float(str(data_array[i][1]).replace("ms","")))
-            elif(tmp.find("us")!=-1):
-                AvLatency.append(float(str(data_array[i][1]).replace("us",""))/1000)
-            elif(tmp.find("s")!=-1):
-                AvLatency.append(float(str(data_array[i][1]).replace("s",""))*1000)
+if (True):
+    for i in range(len(data_array)):
+        if(data_array[i][0]=="Latency" and data_array[i][1]!="Distribution"):
+            if (data_array[i][1]!="-nanus"):
+                tmp = str(data_array[i][1])
+                if(tmp.find("ms")!=-1):
+                    AvLatency.append(float(str(data_array[i][1]).replace("ms","")))
+                elif(tmp.find("us")!=-1):
+                    AvLatency.append(float(str(data_array[i][1]).replace("us",""))/1000)
+                elif(tmp.find("s")!=-1):
+                    AvLatency.append(float(str(data_array[i][1]).replace("s",""))*1000)
+                else:
+                    print("error")
             else:
-                print("error")
-        else:
-            AvLatency.append(0.00)
+                AvLatency.append(0.00)
 
-       #print(data_array[i][3])
-        if (data_array[i][3]!="-nanus"):
-            tmp = str(data_array[i][3])
-            if(tmp.find("ms")!=-1):
-                TailLatency.append(float(str(data_array[i][3]).replace("ms","")))
-            elif(tmp.find("us")!=-1):
-                TailLatency.append(float(str(data_array[i][3]).replace("us",""))/1000000)
-            elif(tmp.find("s")!=-1):
-                TailLatency.append(float(str(data_array[i][3]).replace("s",""))*1000)
-            else:
-                print("error")
-       #AvLatency.append(str(data_array[i][1]).replace("ms",""))
-       #TailLatency.append(str(data_array[i][3]).replace("ms",""))
-    if(len(data_array[i])>1 and data_array[i][1]== "requests" and data_array[i][2]== "in"):
-        totalreq.append(float(data_array[i][0]))
-    if(data_array[i][0]== "Requests/sec:"):
-        reqpersec.append(float(data_array[i][1]))
-#print(len(AvLatency), len(TailLatency), len(reqpersec), len(totalreq), "\n")
-#print("AvLatency:", AvLatency, "\n\nTailLatency:", TailLatency, "\n\nreqpersec:", reqpersec, "\n\ntotalreq:", totalreq)
-l=0
-#plt.plot(AvLatency,reqpersec)
-for i in range(qpsRate*100,qpsRate*1100,qpsRate*100):
-    qps.append(int(i))
-    for j in range(0,5):
-        qpsbar.append(int(i)+j*5*qpsRate)
-        dropedreq.append(int(i)*30-totalreq[l])
-        l+=1
-#qps.pop()
-AvLatencyAv = []
-Avtmp=0
-TailLatencyAv = []
-Tailtmp=0
-reqpersecAv = []
-reqtmp=0
-totalreqAv = []
-totaltmp=0
-dropedreqAv = []
-dropedtmp=0
-for i in range(0,10):
-    for j in range(0,5):
-        l=i*5+j
-        #print("\n\n", l)
-        Avtmp+=AvLatency[l]
-        Tailtmp+=TailLatency[l]
-        reqtmp+=reqpersec[l]
-        totaltmp+=totalreq[l]
-        dropedtmp+=dropedreq[l]
-    AvLatencyAv.append(Avtmp/5)
-    TailLatencyAv.append(Tailtmp/5)
-    reqpersecAv.append(reqtmp/5)
-    totalreqAv.append(totaltmp/5)
-    dropedreqAv.append(dropedtmp/5)
+        #print(data_array[i][3])
+            if (data_array[i][3]!="-nanus"):
+                tmp = str(data_array[i][3])
+                if(tmp.find("ms")!=-1):
+                    TailLatency.append(float(str(data_array[i][3]).replace("ms","")))
+                elif(tmp.find("us")!=-1):
+                    TailLatency.append(float(str(data_array[i][3]).replace("us",""))/1000000)
+                elif(tmp.find("s")!=-1):
+                    TailLatency.append(float(str(data_array[i][3]).replace("s",""))*1000)
+                else:
+                    print("error")
+        #AvLatency.append(str(data_array[i][1]).replace("ms",""))
+        #TailLatency.append(str(data_array[i][3]).replace("ms",""))
+        if(len(data_array[i])>1 and data_array[i][1]== "requests" and data_array[i][2]== "in"):
+            totalreq.append(float(data_array[i][0]))
+        if(data_array[i][0]== "Requests/sec:"):
+            reqpersec.append(float(data_array[i][1]))
+    #print(len(AvLatency), len(TailLatency), len(reqpersec), len(totalreq), "\n")
+    #print("AvLatency:", AvLatency, "\n\nTailLatency:", TailLatency, "\n\nreqpersec:", reqpersec, "\n\ntotalreq:", totalreq)
+    l=0
+    #plt.plot(AvLatency,reqpersec)
+    for i in range(qpsRate*100,qpsRate*1100,qpsRate*100):
+        qps.append(int(i))
+        for j in range(0,5):
+            qpsbar.append(int(i)+j*5*qpsRate)
+            dropedreq.append(int(i)*30-totalreq[l])
+            l+=1
+    #qps.pop()
+    AvLatencyAv = []
     Avtmp=0
+    TailLatencyAv = []
     Tailtmp=0
+    reqpersecAv = []
     reqtmp=0
+    totalreqAv = []
     totaltmp=0
+    dropedreqAv = []
     dropedtmp=0
+    for i in range(0,10):
+        for j in range(0,5):
+            l=i*5+j
+            #print("\n\n", l)
+            Avtmp+=AvLatency[l]
+            Tailtmp+=TailLatency[l]
+            reqtmp+=reqpersec[l]
+            totaltmp+=totalreq[l]
+            dropedtmp+=dropedreq[l]
+        AvLatencyAv.append(Avtmp/5)
+        TailLatencyAv.append(Tailtmp/5)
+        reqpersecAv.append(reqtmp/5)
+        totalreqAv.append(totaltmp/5)
+        dropedreqAv.append(dropedtmp/5)
+        Avtmp=0
+        Tailtmp=0
+        reqtmp=0
+        totaltmp=0
+        dropedtmp=0
 
 
 
 
 
 
-##################################################################################################
-# qps/latency All  #
-##################################################################################################
+    ##################################################################################################
+    # qps/latency All  #
+    ##################################################################################################
 
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/latency for 30s')
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/latency for 30s')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('latency in milliseconds', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('latency in milliseconds', color = 'g')
 
-#ax2 = ax.twinx()
+    #ax2 = ax.twinx()
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
-x = qps
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
+    x = qps
 
-y = TailLatency
-z = AvLatency
-q = reqpersec
+    y = TailLatency
+    z = AvLatency
+    q = reqpersec
 
 
-ax.plot(qps, TailLatencyAv, marker="o", markersize=4, markeredgecolor="green", markerfacecolor="green", label="qps/tail latency (99th)")
-ax.plot(qps, AvLatencyAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/average latency")
-ax.bar(qpsbar, TailLatency, width=5.0, edgecolor = "black")
-ax.bar(qpsbar, AvLatency, width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
+    ax.plot(qps, TailLatencyAv, marker="o", markersize=4, markeredgecolor="green", markerfacecolor="green", label="qps/tail latency (99th)")
+    ax.plot(qps, AvLatencyAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/average latency")
+    ax.bar(qpsbar, TailLatency, width=5.0, edgecolor = "black")
+    ax.bar(qpsbar, AvLatency, width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
 
-plt.show()
+    plt.show()
 
 
-##################################################################################################
-# qps/latency up to 200 qps  #
-##################################################################################################
+    ##################################################################################################
+    # qps/latency up to 200 qps  #
+    ##################################################################################################
 
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/latency for 30s')
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/latency for 30s')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('latency in milliseconds', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('latency in milliseconds', color = 'g')
 
-#ax2 = ax.twinx()
+    #ax2 = ax.twinx()
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
-x = qps[0:10]
-#x.sort(reverse=True)
-#x = np.array(x)
-y = TailLatency[0:10]
-z = AvLatency[0:10]
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
+    x = qps[0:10]
+    #x.sort(reverse=True)
+    #x = np.array(x)
+    y = TailLatency[0:10]
+    z = AvLatency[0:10]
 
-ax.plot(qps[0:8], TailLatencyAv[0:8], marker="o", markersize=4, markeredgecolor="green", markerfacecolor="green", label="qps/tail latency (99th)")
-ax.plot(qps[0:8], AvLatencyAv[0:8], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/average latency")
-ax.bar(qpsbar[0:38], TailLatency[0:38], width=5.0, edgecolor = "black")
-ax.bar(qpsbar[0:38], AvLatency[0:38], width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
+    
+    ax.plot(qps[0:4], TailLatencyAv[0:4], marker="o", markersize=4, markeredgecolor="green", markerfacecolor="green", label="qps/tail latency (99th)")
+    ax.plot(qps[0:4], AvLatencyAv[0:4], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/average latency")
+    ax.bar(qpsbar[0:20], TailLatency[0:20], width=5.0, edgecolor = "black")
+    ax.bar(qpsbar[0:20], AvLatency[0:20], width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
 
-plt.show()
+    plt.show()
 
 
 
-##################################################################################################
-# qps/reqpersec/drops All  #
-##################################################################################################
-"""
-x = qps
-w = totalreq
-d = dropedreq
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/total requests/dropped requests for 30')
+    ##################################################################################################
+    # qps/reqpersec/drops All  #
+    ##################################################################################################
+    """
+    x = qps
+    w = totalreq
+    d = dropedreq
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/total requests/dropped requests for 30')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('total requests', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('total requests', color = 'g')
 
-ax2 = ax.twinx()
-ax2.set_ylabel('dropped requests', color = 'g')
+    ax2 = ax.twinx()
+    ax2.set_ylabel('dropped requests', color = 'g')
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
 
-ax.plot(qps, totalreqAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total requests")
-ax2.plot(qps, dropedreqAv, marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/dropped requests")
-ax.bar(qpsbar, totalreq, width=5.0, edgecolor = "black")
-ax2.bar(qpsbar, dropedreq, color="orange", width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
-ax2.legend(loc="upper left")
+    ax.plot(qps, totalreqAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total requests")
+    ax2.plot(qps, dropedreqAv, marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/dropped requests")
+    ax.bar(qpsbar, totalreq, width=5.0, edgecolor = "black")
+    ax2.bar(qpsbar, dropedreq, color="orange", width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
+    ax2.legend(loc="upper left")
 
 
-plt.show()
+    plt.show()
 
 
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/total requests/dropped requests for 30')
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/total requests/dropped requests for 30')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('total requests', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('total requests', color = 'g')
 
-ax2 = ax.twinx()
-ax2.set_ylabel('dropped requests', color = 'g')
+    ax2 = ax.twinx()
+    ax2.set_ylabel('dropped requests', color = 'g')
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
 
-ax.plot(qps[0:3], totalreqAv[0:3], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total requests")
-ax2.plot(qps[0:3], dropedreqAv[0:3], marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/dropped requests")
-ax.bar(qpsbar[0:15], totalreq[0:15], width=5.0, edgecolor = "black")
-ax2.bar(qpsbar[0:15], dropedreq[0:15], color="orange", width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
-ax2.legend(loc="upper left")
+    ax.plot(qps[0:3], totalreqAv[0:3], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total requests")
+    ax2.plot(qps[0:3], dropedreqAv[0:3], marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/dropped requests")
+    ax.bar(qpsbar[0:15], totalreq[0:15], width=5.0, edgecolor = "black")
+    ax2.bar(qpsbar[0:15], dropedreq[0:15], color="orange", width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
+    ax2.legend(loc="upper left")
 
 
-plt.show()
+    plt.show()
 
-"""
+    """
 
 
 
@@ -229,46 +232,46 @@ plt.show()
 
 
 
-x = qps
-w = totalreq
-d = dropedreq
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/total requests/dropped requests for 30s')
+    x = qps
+    w = totalreq
+    d = dropedreq
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/total requests/dropped requests for 30s')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('requests', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('requests', color = 'g')
 
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
 
-ax.plot(qps, totalreqAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total executed requests")
-ax.plot(qps, dropedreqAv, marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/total dropped requests")
-ax.bar(qpsbar, totalreq, width=5.0, edgecolor = "black")
-ax.bar(qpsbar, dropedreq, color="orange", width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
+    ax.plot(qps, totalreqAv, marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total executed requests")
+    ax.plot(qps, dropedreqAv, marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/total dropped requests")
+    ax.bar(qpsbar, totalreq, width=5.0, edgecolor = "black")
+    ax.bar(qpsbar, dropedreq, color="orange", width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
 
 
-plt.show()
+    plt.show()
 
 
-fig, ax = plt.subplots(figsize = (10, 5))
-plt.title('qps/total requests/dropped requests for 30s')
+    fig, ax = plt.subplots(figsize = (10, 5))
+    plt.title('qps/total requests/dropped requests for 30s')
 
-ax.set_xlabel('qps', color = 'r')
-ax.set_ylabel('requests', color = 'g')
+    ax.set_xlabel('qps', color = 'r')
+    ax.set_ylabel('requests', color = 'g')
 
 
-plt.rcParams["figure.figsize"] = [17.00, 13.50]
-plt.rcParams["figure.autolayout"] = True
+    plt.rcParams["figure.figsize"] = [17.00, 13.50]
+    plt.rcParams["figure.autolayout"] = True
 
-ax.plot(qps[0:8], totalreqAv[0:8], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total executed requests")
-ax.plot(qps[0:8], dropedreqAv[0:8], marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/total dropped requests")
-ax.bar(qpsbar[0:38], totalreq[0:38], width=5.0, edgecolor = "black")
-ax.bar(qpsbar[0:38], dropedreq[0:38], color="orange", width=5.0, edgecolor = "black")
-ax.legend(loc="upper left")
+    ax.plot(qps[0:4], totalreqAv[0:4], marker="o", markersize=4, markeredgecolor="black", markerfacecolor="black", label="qps/total executed requests")
+    ax.plot(qps[0:4], dropedreqAv[0:4], marker="o", color="orange", markersize=2, markeredgecolor="red", markerfacecolor="purple", label="qps/total dropped requests")
+    ax.bar(qpsbar[0:20], totalreq[0:20], width=5.0, edgecolor = "black")
+    ax.bar(qpsbar[0:20], dropedreq[0:20], color="orange", width=5.0, edgecolor = "black")
+    ax.legend(loc="upper left")
 
-plt.show()
+    plt.show()
 
 
 
@@ -328,7 +331,7 @@ plt.show()
 
 
 
-for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/cstateAv"):
+for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/cstateAv"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []
@@ -352,7 +355,7 @@ x = []
 j=0
 for i in range(len(data_array1)):
     if(len(data_array1[i]) == 4):
-        if(float(str(data_array1[i][0]).replace("[","").replace(",",""))>1.00):
+        if((float(str(data_array1[i][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i][3]).replace("]",""))>1.00)):
             c0t.append(float(str(data_array1[i][0]).replace("[","").replace(",","")))
             c1t.append(float(str(data_array1[i][1]).replace(",","")))
             c1et.append(float(str(data_array1[i][2]).replace(",","")))
@@ -377,7 +380,7 @@ for i in range(len(data_array1)):
         
         
 #print(len(data_array1[0]))
-#print(len(c0), len(c1), len(c1e), len(c6), "\n")
+print(len(c0), len(c1), len(c1e), len(c6), "\n")
 #print("c0:",  c0, "\n\nc1:", c1, "\n\nc1e:", c1e, "\n\nc6:", c6)"
 #print((x))
 
@@ -385,44 +388,39 @@ for i in range(len(data_array1)):
 
 # create data
 
-y1 = np.array(c0)
-y2 = np.array(c1)
-y3 = np.array(c1e)
-y4 = np.array(c6)
+
  
 # plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate)
-plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate)
-plt.xlabel("qps")
-plt.ylabel("Time percentage(%) out of 30 sec in each C-state")
-plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("Time percentage(%) out of 30 sec, in each C-state relative to qps")
-plt.show()
+for i in range (0, nodes):
+    y1 = np.array(c0)
+    y2 = np.array(c1)
+    y3 = np.array(c1e)
+    y4 = np.array(c6)
+    plt.bar(x[0:50], y1[i*50:i*50+50], color='r', width=qpsRate)
+    plt.bar(x[0:50], y2[i*50:i*50+50], bottom=y1[i*50:i*50+50], color='b', width=qpsRate)
+    plt.bar(x[0:50], y3[i*50:i*50+50], bottom=y1[i*50:i*50+50]+y2[i*50:i*50+50], color='y', width=qpsRate)
+    plt.bar(x[0:50], y4[i*50:i*50+50], bottom=y1[i*50:i*50+50]+y2[i*50:i*50+50]+y3[i*50:i*50+50], color='g', width=qpsRate)
+    plt.xlabel("qps")
+    plt.ylabel("Time percentage(%) out of 30 sec in each C-state")
+    plt.legend(['c0', 'c1', 'c1e', 'c6'])
+    plt.title("Time percentage(%) out of 30 sec, in each C-state relative to qps")
+    plt.show()
 
-y1 = np.array(c0t)
-y2 = np.array(c1t)
-y3 = np.array(c1et)
-y4 = np.array(c6t)
- 
-# plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate)
-plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate)
-plt.xlabel("qps")
-plt.ylabel("CState transitions in 30 sec in each C-state")
-plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("CState transitions in 30 sec, in each C-state relative to qps")
-plt.show()
-
-
-
-
-
-
-
+    y1 = np.array(c0t)
+    y2 = np.array(c1t)
+    y3 = np.array(c1et)
+    y4 = np.array(c6t)
+    
+    # plot bars in stack manner
+    plt.bar(x[0:50], y1[i*50:i*50+50], color='r', width=qpsRate)
+    plt.bar(x[0:50], y2[i*50:i*50+50], bottom=y1[i*50:i*50+50], color='b', width=qpsRate)
+    plt.bar(x[0:50], y3[i*50:i*50+50], bottom=y1[i*50:i*50+50]+y2[i*50:i*50+50], color='y', width=qpsRate)
+    plt.bar(x[0:50], y4[i*50:i*50+50], bottom=y1[i*50:i*50+50]+y2[i*50:i*50+50]+y3[i*50:i*50+50], color='g', width=qpsRate)
+    plt.xlabel("qps")
+    plt.ylabel("CState transitions in 30 sec in each C-state")
+    plt.legend(['c0', 'c1', 'c1e', 'c6'])
+    plt.title("CState transitions in 30 sec, in each C-state relative to qps")
+    plt.show()
 
 
 
@@ -451,7 +449,14 @@ plt.show()
 
 
 
-for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/power"):
+
+
+
+
+
+
+
+for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/power"):
     f=open(name, "r")
 #f=open("power.txt", "r")
 #next(f)
@@ -472,7 +477,7 @@ package0 = []
 package1 = []
 
 for i in range(len(data_array2)):
-    if (len(package1)==50):
+    if (len(package1)==nodes*50):
         break
     if(data_array2[i][0]=="dram"):
         t1=float(data_array2[i+1][1])-float(data_array2[i+2][1])
@@ -497,16 +502,17 @@ y2 = np.array(package0)
 y3 = np.array(package1)
  
 # plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate)
-plt.xlabel("qps")
-plt.ylabel("Power consumption in W")
-plt.legend(['dram', 'package0', 'package1'])
-plt.title("Power consumption in W relative to qps")
-plt.show()
 
 
+for i in range (0, nodes):
+    plt.bar(x[0:50], y1[i*50:i*50+50], color='r', width=qpsRate)
+    plt.bar(x[0:50], y2[i*50:i*50+50], bottom=y1[i*50:i*50+50], color='b', width=qpsRate)
+    plt.bar(x[0:50], y3[i*50:i*50+50], bottom=y1[i*50:i*50+50]+y2[i*50:i*50+50], color='y', width=qpsRate)
+    plt.xlabel("qps")
+    plt.ylabel("Power consumption in W")
+    plt.legend(['dram', 'package0', 'package1'])
+    plt.title("Power consumption in W relative to qps")
+    plt.show()
 
 
 
@@ -585,7 +591,7 @@ plt.show()
 
 
 
-for name in glob("./outputs/default_flags_smt_disabled_100-1000qps/cpuCState"):
+for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/cpuCState"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []
@@ -607,14 +613,14 @@ c1e = []
 c6 = []
 x = []
 
-tc0t = [0] * 200
-tc1t = [0] * 200
-tc1et = [0] * 200
-tc6t = [0] * 200
-tc0 = [0] * 200
-tc1 = [0] * 200
-tc1e = [0] * 200
-tc6 = [0] * 200
+tc0t = [0] * 2000
+tc1t = [0] * 2000
+tc1et = [0] * 2000
+tc6t = [0] * 2000
+tc0 = [0] * 2000
+tc1 = [0] * 2000
+tc1e = [0] * 2000
+tc6 = [0] * 2000
 j=0
 
 
@@ -623,7 +629,7 @@ for i in range(0, len(data_array1), 10):
     #print(j)
     for q in range(0,10):
         if(len(data_array1[i+q]) == 4):
-            if(float(str(data_array1[i+q][0]).replace("[","").replace(",",""))>1.00):
+            if((float(str(data_array1[i+q][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i+q][3]).replace("]",""))>1.00)):
                 tc0t[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
                 tc1t[j]+=(float(str(data_array1[i+q][1]).replace(",","")))
                 tc1et[j]+=(float(str(data_array1[i+q][2]).replace(",","")))
@@ -656,70 +662,36 @@ for i in range(0, len(data_array1), 10):
 
 # create data
 
-y1 = np.array(c0)
-y2 = np.array(c1)
-y3 = np.array(c1e)
-y4 = np.array(c6)
- 
-# plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate*2)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate*2)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate*2)
-plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate*2)
-plt.xlabel("qps")
-plt.ylabel("Time percentage(%) out of 30 sec in each C-state")
-plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("Time percentage(%) out of 30 sec, in each C-state, for each core, relative to qps")
-plt.show()
+for i in range (0, nodes):
 
-y1 = np.array(c0t)
-y2 = np.array(c1t)
-y3 = np.array(c1et)
-y4 = np.array(c6t)
- 
-# plot bars in stack manner
-plt.bar(x, y1, color='r', width=qpsRate*2)
-plt.bar(x, y2, bottom=y1, color='b', width=qpsRate*2)
-plt.bar(x, y3, bottom=y1+y2, color='y', width=qpsRate*2)
-plt.bar(x, y4, bottom=y1+y2+y3, color='g', width=qpsRate*2)
-plt.xlabel("qps")
-plt.ylabel("CState transitions in 30 sec in each C-state")
-plt.legend(['c0', 'c1', 'c1e', 'c6'])
-plt.title("CState transitions in 30 sec, in each C-state, for each core, relative to qps")
-plt.show()
+    y1 = np.array(c0)
+    y2 = np.array(c1)
+    y3 = np.array(c1e)
+    y4 = np.array(c6)
+    
+    # plot bars in stack manner
+    plt.bar(x[0:200], y1[i*200:i*200+200], color='r', width=qpsRate*2)
+    plt.bar(x[0:200], y2[i*200:i*200+200], bottom=y1[i*200:i*200+200], color='b', width=qpsRate*2)
+    plt.bar(x[0:200], y3[i*200:i*200+200], bottom=y1[i*200:i*200+200]+y2[i*200:i*200+200], color='y', width=qpsRate*2)
+    plt.bar(x[0:200], y4[i*200:i*200+200], bottom=y1[i*200:i*200+200]+y2[i*200:i*200+200]+y3[i*200:i*200+200], color='g', width=qpsRate*2)
+    plt.xlabel("qps")
+    plt.ylabel("Time percentage(%) out of 30 sec in each C-state")
+    plt.legend(['c0', 'c1', 'c1e', 'c6'])
+    plt.title("Time percentage(%) out of 30 sec, in each C-state, for each core, relative to qps")
+    plt.show()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    y1 = np.array(c0t)
+    y2 = np.array(c1t)
+    y3 = np.array(c1et)
+    y4 = np.array(c6t)
+    
+    # plot bars in stack manner
+    plt.bar(x[0:200], y1[i*200:i*200+200], color='r', width=qpsRate*2)
+    plt.bar(x[0:200], y2[i*200:i*200+200], bottom=y1[i*200:i*200+200], color='b', width=qpsRate*2)
+    plt.bar(x[0:200], y3[i*200:i*200+200], bottom=y1[i*200:i*200+200]+y2[i*200:i*200+200], color='y', width=qpsRate*2)
+    plt.bar(x[0:200], y4[i*200:i*200+200], bottom=y1[i*200:i*200+200]+y2[i*200:i*200+200]+y3[i*200:i*200+200], color='g', width=qpsRate*2)
+    plt.xlabel("qps")
+    plt.ylabel("CState transitions in 30 sec in each C-state")
+    plt.legend(['c0', 'c1', 'c1e', 'c6'])
+    plt.title("CState transitions in 30 sec, in each C-state, for each core, relative to qps")
+    plt.show()

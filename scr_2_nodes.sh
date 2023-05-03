@@ -9,6 +9,20 @@ for (( i=0 ; i<$1 ; i++ ));
 do
     if [ $i -eq 0 ]; then
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
+	#git clone https://github.com/hvolos/mcperf.git
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
+	sudo apt-get install msr-tools
+	sudo apt-get install linux-tools-common
+	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo modprobe msr
+	sudo cpupower frequency-set –g performance
+	sudo cpupower frequency-set –f 2200MHz 
+	sudo wrmsr 0x620 0x1414 
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_pstate=disabled"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
+	sudo update-grub2
+	reboot
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
 	variable=`cat file |  grep "docker swarm join --token"`
@@ -16,9 +30,22 @@ else
 	
 	ssh node$i<<EOT
 	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
-
 	git clone https://github.com/svassi04/Ptix-Fork.git
 	cd Ptix-Fork
+	#git clone https://github.com/hvolos/mcperf.git
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
+	sudo apt-get install msr-tools
+	sudo apt-get install linux-tools-common
+	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo modprobe msr
+	sudo cpupower frequency-set –g performance
+	sudo cpupower frequency-set –f 2200MHz 
+	sudo wrmsr 0x620 0x1414 
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_pstate=disabled"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
+	sudo update-grub2
+	reboot
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
 	sudo$variable
@@ -38,10 +65,6 @@ sudo$variable"
 #python3 scripts/init_social_graph.py --graph=socfb-Reed98;
 #cd wrk2;
 #make;
-
-
-
-
 
 
 
