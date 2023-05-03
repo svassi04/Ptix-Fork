@@ -19,13 +19,13 @@ do
 	sudo apt-get install linux-tools-common
 	sudo apt-get install linux-tools-4.15.0-169-generic -y
 	sudo modprobe msr
-	sudo cpupower frequency-set –g performance
-	sudo cpupower frequency-set –f 2200MHz 
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -f 2200MHz 
 	sudo wrmsr 0x620 0x1414 
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_pstate=disabled"/' /etc/default/grub
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
 	sudo update-grub2
-	reboot
+	sudo reboot
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
 	variable=`cat file |  grep "docker swarm join --token"`
@@ -43,11 +43,11 @@ else
 	sudo apt-get install linux-tools-common
 	sudo apt-get install linux-tools-4.15.0-169-generic -y
 	sudo modprobe msr
-	sudo cpupower frequency-set –g performance
-	sudo cpupower frequency-set –f 2200MHz 
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -f 2200MHz 
 	sudo wrmsr 0x620 0x1414 
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_pstate=disabled"/' /etc/default/grub
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX_DEFAULT=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
 	sudo update-grub2
 	reboot
 	chmod +x scr_work.sh
