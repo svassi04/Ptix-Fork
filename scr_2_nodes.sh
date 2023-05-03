@@ -49,7 +49,7 @@ else
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
 	sudo update-grub2
-	reboot
+	sudo reboot
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
 	sudo$variable
