@@ -8,6 +8,9 @@ echo $NODE1
 for (( i=0 ; i<$1 ; i++ )); 
 do
     if [ $i -eq 0 ]; then
+	ssh node$i<<EOT
+	git clone https://github.com/svassi04/Ptix-Fork.git
+	cd Ptix-Fork
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	#git clone https://github.com/hvolos/mcperf.git
 	chmod u+x turbo-boost.sh
@@ -26,6 +29,7 @@ do
 	chmod +x scr_master.sh
 	yes Y|./scr_master.sh
 	variable=`cat file |  grep "docker swarm join --token"`
+EOT
 else
 	
 	ssh node$i<<EOT
@@ -56,7 +60,7 @@ fi
 done
 sudo docker stack deploy --compose-file=docker-compose-swarm-2-nodes.yml SocialNetwork
 
-ssh  node$i "git clone https://github.com/svassi04/Ptix-Fork.git;
+#ssh  node$i "git clone https://github.com/svassi04/Ptix-Fork.git;
 cd Ptix-Fork;
 chmod +x scr_work.sh;
 yes Y|./scr_work.sh;
