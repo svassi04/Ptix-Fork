@@ -5,6 +5,9 @@ echo $NODE0
 export NODE1=$(ssh node1 hostname)
 echo $NODE1
 
+
+
+
 for (( i=0 ; i<$1 ; i++ )); 
 do
     if [ $i -eq 0 ]; then
@@ -26,9 +29,6 @@ do
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
 	sudo update-grub2
 	sudo reboot
-	chmod +x scr_master.sh
-	yes Y|./scr_master.sh
-	variable=`cat file |  grep "docker swarm join --token"`
 EOT
 else
 	
@@ -50,6 +50,30 @@ else
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
 	sudo update-grub2
 	sudo reboot
+EOT
+	
+sleep 3m
+
+fi
+done
+
+
+
+
+for (( i=0 ; i<$1 ; i++ )); 
+do
+    if [ $i -eq 0 ]; then
+	ssh node$i<<EOT
+	cd Ptix-Fork
+	chmod +x scr_master.sh
+	yes Y|./scr_master.sh
+	variable=`cat file |  grep "docker swarm join --token"`
+EOT
+else
+	
+	ssh node$i<<EOT
+	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
+	cd Ptix-Fork
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
 	sudo$variable
