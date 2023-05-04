@@ -56,5 +56,5 @@ done
 
 sleep 5m
 
-ssh node0 "cd Ptix-Fork; chmod u+x scr_2_nodes.sh; ./scr_2_nodes.sh $1"
+#ssh node0 "cd Ptix-Fork; chmod u+x scr_2_nodes.sh; ./scr_2_nodes.sh $1"
 
