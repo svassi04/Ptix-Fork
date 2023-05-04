@@ -54,12 +54,12 @@ else
 	sudo reboot
 EOT
 	
-sleep 3m
+
 
 fi
 done
 
-
+sleep 5m
 
 
 for (( i=0 ; i<$1 ; i++ )); 
