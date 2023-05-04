@@ -23,7 +23,8 @@ do
 	sudo apt-get install linux-tools-4.15.0-169-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
-	sudo cpupower frequency-set -f 2200MHz 
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
 	sudo wrmsr 0x620 0x1414 
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
@@ -33,7 +34,7 @@ EOT
 else
 	
 	ssh node$i<<EOT
-	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	git clone https://github.com/svassi04/Ptix-Fork.git
 	cd Ptix-Fork
 	#git clone https://github.com/hvolos/mcperf.git
@@ -44,7 +45,8 @@ else
 	sudo apt-get install linux-tools-4.15.0-169-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
-	sudo cpupower frequency-set -f 2200MHz 
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
 	sudo wrmsr 0x620 0x1414 
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=1"/' /etc/default/grub
