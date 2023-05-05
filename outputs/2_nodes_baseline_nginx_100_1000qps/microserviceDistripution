@@ -1,0 +1,34 @@
+node0
+CONTAINER ID   IMAGE                                       COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+744e8ae5d409   jaegertracing/jaeger-collector:latest       "/go/bin/collector-l…"   44 minutes ago   Up 44 minutes   14250/tcp                                     SocialNetwork_jaeger-collector.1.uktrrjo9n43qtoe0ozdunv20q
+57084b36b1b7   jaegertracing/jaeger-query:latest           "/go/bin/query-linux…"   44 minutes ago   Up 44 minutes   16686/tcp                                     SocialNetwork_jaeger-query.1.xt45eud0co3k6c0fbumsd3a4o
+c6972ccd5ffa   cassandra:3.9                               "/docker-entrypoint.…"   45 minutes ago   Up 45 minutes   7000-7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp   SocialNetwork_cassandra.1.lv5favznvjrmlrfjw0kp6ie9v
+ffdeaf6289c3   memcached:latest                            "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   11211/tcp                                     SocialNetwork_user-memcached.1.cmtzaqela91xxrmmrd2ubmztb
+62eedfae029c   yg397/social-network-microservices:latest   "UserService"            45 minutes ago   Up 45 minutes                                                 SocialNetwork_user-service.1.z3gfzz21qb7efrlmvcuhv8v0b
+9013946ef8f2   yg397/media-frontend:xenial                 "/usr/local/openrest…"   45 minutes ago   Up 45 minutes                                                 SocialNetwork_media-frontend.1.n09ohwu1044n9dtjgjhdk9a4h
+cb523a4df3c7   yg397/social-network-microservices:latest   "UniqueIdService"        45 minutes ago   Up 45 minutes                                                 SocialNetwork_unique-id-service.1.kz4u4d2w2q1q94b0jad1qfsvk
+8083dc629666   redis:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   6379/tcp                                      SocialNetwork_social-graph-redis.1.hdp9h42mfttpkna7mtzun06xz
+6a060a0652a1   yg397/social-network-microservices:latest   "UrlShortenService"      45 minutes ago   Up 45 minutes                                                 SocialNetwork_url-shorten-service.1.aytpyx944ui33b97ky9lvntmf
+34f64c0f8c99   yg397/social-network-microservices:latest   "UserTimelineService"    45 minutes ago   Up 45 minutes                                                 SocialNetwork_user-timeline-service.1.vzk5hqi5lvlwe5htuoinbyaui
+c7426c6800f2   yg397/social-network-microservices:latest   "MediaService"           45 minutes ago   Up 45 minutes                                                 SocialNetwork_media-service.1.40u7raboqc1udpogq2u0o96ga
+8edf0f094427   yg397/social-network-microservices:latest   "UserMentionService"     45 minutes ago   Up 45 minutes                                                 SocialNetwork_user-mention-service.1.i0lhdwrtd6k7jmip99vx2sld2
+1f34baa4ca7c   yg397/social-network-microservices:latest   "PostStorageService"     45 minutes ago   Up 45 minutes                                                 SocialNetwork_post-storage-service.1.rhdb4hv1bzxzh2ep4dx27hwob
+6fa288f70a29   yg397/social-network-microservices:latest   "ComposePostService"     45 minutes ago   Up 45 minutes                                                 SocialNetwork_compose-post-service.1.6tuvx2amqih319jiappdvnqat
+0fb3529a7942   yg397/social-network-microservices:latest   "HomeTimelineService"    45 minutes ago   Up 45 minutes                                                 SocialNetwork_home-timeline-service.1.8hq4uhiyhi6ou669s0btbzab8
+718e7df92d51   yg397/social-network-microservices:latest   "SocialGraphService"     45 minutes ago   Up 45 minutes                                                 SocialNetwork_social-graph-service.1.j8l3wt8n5bk1rs3w3tk8mqv4b
+b8eeb339b1e8   yg397/social-network-microservices:latest   "TextService"            45 minutes ago   Up 45 minutes                                                 SocialNetwork_text-service.1.ukd9v8soo961cohjlxo20ek6w
+3465e9b95946   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_url-shorten-mongodb.1.bly2h4u5uq41c5md94yixa0lh
+825a6ea0b30f   memcached:latest                            "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   11211/tcp                                     SocialNetwork_post-storage-memcached.1.tzn9vpo2u4cgotlwqvtif4uct
+993a8f4781a3   redis:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   6379/tcp                                      SocialNetwork_home-timeline-redis.1.88w9ndvuxyq8vhn13l6wondd2
+50e7f01591d0   redis:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   6379/tcp                                      SocialNetwork_user-timeline-redis.1.alyu35fsklqxk6k2j41j7q9r3
+8235fa947d39   memcached:latest                            "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   11211/tcp                                     SocialNetwork_url-shorten-memcached.1.v0h0edjn7rw5m0wiatcj5c6xl
+e578607a2c80   memcached:latest                            "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   11211/tcp                                     SocialNetwork_media-memcached.1.1xmler0n9m8uglsuz6gj98qzg
+c218df097d3d   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_post-storage-mongodb.1.qcyxxqhwpxr881hyhrc17mg7b
+79d9200f1df7   jaegertracing/jaeger-agent:latest           "/go/bin/agent-linux…"   45 minutes ago   Up 45 minutes   5775/udp, 6831-6832/udp, 5778/tcp             SocialNetwork_jaeger-agent.1.jdvlqpril82osf519uaelmyxh
+a29b62f76a05   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_user-timeline-mongodb.1.ipeiqpxyc1jbvx3w5xqkwypln
+9bb24f389d7c   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_social-graph-mongodb.1.rpdyh1qjo4c644stpg87w0ryy
+ee3d88532e4a   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_user-mongodb.1.bzkokrrdt0ne3w9v6nt2jc2q9
+51066cee0b95   mongo:latest                                "docker-entrypoint.s…"   45 minutes ago   Up 45 minutes   27017/tcp                                     SocialNetwork_media-mongodb.1.7ua4zl8mwncy5ykssx7jqs95d
+node1
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS     NAMES
+79146764db40   yg397/openresty-thrift:xenial   "/usr/local/openrest…"   46 minutes ago   Up 46 minutes             SocialNetwork_nginx-web-server.1.l59i1u7ih5o2vppoaebyqvpru
