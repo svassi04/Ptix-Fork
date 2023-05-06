@@ -23,7 +23,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE3}"]
+        constraints: ["node.hostname == ${NODE0}"]
     depends_on:
       - jaeger-collector
 
@@ -111,7 +111,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     hostname: media-memcached
     image: memcached
     command:
@@ -190,7 +190,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     hostname: post-storage-memcached
     image: memcached
     command:
@@ -335,7 +335,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     hostname: url-shorten-memcached
     image: memcached
     command:
@@ -387,7 +387,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     hostname: user-memcached
     image: memcached
     command:
@@ -509,7 +509,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE3}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -529,7 +529,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE3}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
