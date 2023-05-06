@@ -17,13 +17,19 @@ do
                 #./wrk2/wrk -D exp -t 2 -c 2 -d 30 -s ./wrk2/scripts/social-network/compose-post.lua http://localhost:8080/wrk2-api/post/compose -R $d >> runData
                         sudo python3 ./profiler/profiler.py -n node0 start
                         sudo python3 ./profiler/profiler.py -n node1 start
+                        sudo python3 ./profiler/profiler.py -n node2 start
+                        sudo python3 ./profiler/profiler.py -n node3 start
 
                         ./wrk2/wrk -D exp -t 2 -c 2 -d 30 -s ./wrk2/scripts/social-network/read-user-timeline.lua http://localhost:8080/wrk2-api/user-timeline/read -R $d >> output/runData
                         sudo python3 ./profiler/profiler.py -n node0 stop
                         sudo python3 ./profiler/profiler.py -n node1 stop
+                        sudo python3 ./profiler/profiler.py -n node2 stop
+                        sudo python3 ./profiler/profiler.py -n node3 stop
 
                         sudo python3 ./profiler/profiler.py -n node0 report -d ~/temp/node0/qps$d/repeat$i
                         sudo python3 ./profiler/profiler.py -n node1 report -d ~/temp/node1/qps$d/repeat$i
+                        sudo python3 ./profiler/profiler.py -n node2 report -d ~/temp/node0/qps$d/repeat$i
+                        sudo python3 ./profiler/profiler.py -n node3 report -d ~/temp/node1/qps$d/repeat$i
 
        # ./wrk2/wrk -D exp -t 2 -c 2 -d $3 -L -s ./wrk2/scripts/social-network/mixed-workload.lua http://localhost:8080/wrk2-api/post/compose -R $2 >> file1
 

@@ -8,7 +8,7 @@ qpsRate=1
 nodes=2
 
 
-for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -331,7 +331,7 @@ if (True):
 
 
 
-for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/cstateAv"):
+for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/cstateAv"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []
@@ -456,7 +456,7 @@ for i in range (0, nodes):
 
 
 
-for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/power"):
+for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/power"):
     f=open(name, "r")
 #f=open("power.txt", "r")
 #next(f)
@@ -591,7 +591,7 @@ for i in range (0, nodes):
 
 
 
-for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/cpuCState"):
+for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/cpuCState"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []
