@@ -28,7 +28,7 @@ do
 	sudo cpupower frequency-set -u 2200MHz 
 	sudo wrmsr 0x620 0x1414 
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=2"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=0"/' /etc/default/grub
 	sudo update-grub2
 	sudo reboot
 EOT
@@ -50,7 +50,7 @@ else
 	sudo cpupower frequency-set -u 2200MHz 
 	sudo wrmsr 0x620 0x1414 
 	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_pstate=disable"/' /etc/default/grub
-	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=2"/' /etc/default/grub
+	sudo sed -i 's/\(^GRUB_CMDLINE_LINUX=".*\)"$/\1 intel_idle.max_cstate=0"/' /etc/default/grub
 	sudo update-grub2
 	sudo reboot
 EOT
