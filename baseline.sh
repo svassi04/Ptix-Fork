@@ -2,8 +2,8 @@
 
 export NODE0=$(ssh node0 hostname)
 echo $NODE0
-#export NODE1=$(ssh node1 hostname)
-#echo $NODE1
+export NODE1=$(ssh node1 hostname)
+echo $NODE1
 #export NODE2=$(ssh node2 hostname)
 #echo $NODE2
 #export NODE3=$(ssh node3 hostname)

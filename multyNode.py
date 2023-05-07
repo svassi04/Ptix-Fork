@@ -7,7 +7,7 @@ from glob import glob
 qpsRate=1
 nodes=2
 
-for name in glob("./outputs/default_flags_smt_disabled_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -18,7 +18,7 @@ for row in csv.reader(f):
         item = item.split()
         data_array.append(item)
 
-for name in glob("./outputs/2_nodes_services_alone_default_flags_smt_disabled_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_nginx_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -29,7 +29,7 @@ for row in csv.reader(f):
         item = item.split()
         data_array.append(item)
 
-for name in glob("./outputs/2_nodes_jaeger_default_flags_smt_disabled_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_random_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -40,7 +40,7 @@ for row in csv.reader(f):
         item = item.split()
         data_array.append(item)
 
-for name in glob("./outputs/2_nodes_random_placement_default_flags_smt_disabled_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_services_servers_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -98,7 +98,7 @@ if (True):
     l=0
     #plt.plot(AvLatency,reqpersec)
     for i in range(qpsRate*100,qpsRate*4100,qpsRate*100):
-        qps.append(int(i))
+        qps.append(int(i/4))
         for j in range(0,5):
             qpsbar.append(int(i)+j*5*qpsRate)
             #qpsbar.append(int(i)+j*5*qpsRate)
@@ -176,7 +176,7 @@ if (True):
         dropedreqAvReorder.append(dropedreqAv[i+30])
 
 
-
+    print(qps)
     ##################################################################################################
     # qps/latency All  #
     ##################################################################################################
@@ -198,8 +198,8 @@ if (True):
     q = reqpersec
 
 
-    ax.bar(qps, TailLatencyAvReorder, width=50.0, edgecolor = "black")
-    ax.bar(qps, AvLatencyAvReorder, width=50.0, edgecolor = "black")
+    ax.bar(qps, TailLatencyAvReorder, width=20.0, edgecolor = "black")
+    ax.bar(qps, AvLatencyAvReorder, width=20.0, edgecolor = "black")
     ax.legend(loc="upper left")
 
     plt.show()
@@ -226,8 +226,8 @@ if (True):
     z = AvLatency[0:10]
 
     
-    ax.bar(qps[0:16], TailLatencyAvReorder[0:16], width=50.0, edgecolor = "black")
-    ax.bar(qps[0:16], AvLatencyAvReorder[0:16], width=50.0, edgecolor = "black")
+    ax.bar(qps[0:16], TailLatencyAvReorder[0:16], width=20.0, edgecolor = "black")
+    ax.bar(qps[0:16], AvLatencyAvReorder[0:16], width=20.0, edgecolor = "black")
     ax.legend(loc="upper left")
 
     plt.show()
@@ -262,8 +262,8 @@ if (True):
     plt.rcParams["figure.figsize"] = [17.00, 13.50]
     plt.rcParams["figure.autolayout"] = True
 
-    ax.bar(qps, totalreqAvReorder, width=50.0, edgecolor = "black")
-    ax.bar(qps, dropedreqAvReorder, width=50.0, edgecolor = "black")
+    ax.bar(qps, totalreqAvReorder, width=20.0, edgecolor = "black")
+    ax.bar(qps, dropedreqAvReorder, width=20.0, edgecolor = "black")
     ax.legend(loc="upper left")
 
 
@@ -280,8 +280,8 @@ if (True):
     plt.rcParams["figure.figsize"] = [17.00, 13.50]
     plt.rcParams["figure.autolayout"] = True
 
-    ax.bar(qps[0:16], totalreqAvReorder[0:16], width=50.0, edgecolor = "black")
-    ax.bar(qps[0:16], dropedreqAvReorder[0:16], width=50.0, edgecolor = "black")
+    ax.bar(qps[0:16], totalreqAvReorder[0:16], width=20.0, edgecolor = "black")
+    ax.bar(qps[0:16], dropedreqAvReorder[0:16], width=20.0, edgecolor = "black")
     ax.legend(loc="upper left")
 
     plt.show()
