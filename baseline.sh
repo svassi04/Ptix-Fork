@@ -4,10 +4,10 @@ export NODE0=$(ssh node0 hostname)
 echo $NODE0
 export NODE1=$(ssh node1 hostname)
 echo $NODE1
-#export NODE2=$(ssh node2 hostname)
-#echo $NODE2
-#export NODE3=$(ssh node3 hostname)
-#echo $NODE3
+export NODE2=$(ssh node2 hostname)
+echo $NODE2
+export NODE3=$(ssh node3 hostname)
+echo $NODE3
 
 for (( i=0 ; i<$1 ; i++ )); 
 do
@@ -60,5 +60,5 @@ done
 
 sleep 5m
 
-ssh node0 "cd Ptix-Fork; chmod u+x scr.sh; ./scr.sh $1"
+ssh node0 "cd Ptix-Fork; chmod u+x scr_4_nodes.sh; ./scr_4_nodes.sh $1"
 

@@ -1,0 +1,500 @@
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 7.583ms, rate sampling interval: 35ms
+  Thread calibration: mean lat.: 7.250ms, rate sampling interval: 32ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     6.70ms    5.41ms  25.06ms   84.93%
+    Req/Sec    49.47     39.24   156.00     64.90%
+  3000 requests in 30.00s, 5.76MB read
+Requests/sec:     99.99
+Transfer/sec:    196.74KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 6.169ms, rate sampling interval: 27ms
+  Thread calibration: mean lat.: 5.851ms, rate sampling interval: 25ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.62ms    3.81ms  17.42ms   83.16%
+    Req/Sec    49.91     43.67   185.00     59.99%
+  3000 requests in 30.00s, 5.78MB read
+Requests/sec:     99.98
+Transfer/sec:    197.15KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 5.558ms, rate sampling interval: 25ms
+  Thread calibration: mean lat.: 5.921ms, rate sampling interval: 25ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.68ms    3.78ms  17.68ms   83.61%
+    Req/Sec    49.98     45.57   200.00     57.22%
+  3000 requests in 30.00s, 5.71MB read
+Requests/sec:     99.99
+Transfer/sec:    194.93KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 6.020ms, rate sampling interval: 27ms
+  Thread calibration: mean lat.: 5.834ms, rate sampling interval: 25ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.65ms    3.86ms  18.06ms   84.48%
+    Req/Sec    49.96     44.60   166.00     57.51%
+  3000 requests in 30.01s, 5.74MB read
+Requests/sec:     99.98
+Transfer/sec:    195.85KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 5.822ms, rate sampling interval: 25ms
+  Thread calibration: mean lat.: 6.173ms, rate sampling interval: 26ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.73ms    3.94ms  18.62ms   84.52%
+    Req/Sec    49.78     44.68   166.00     57.37%
+  3000 requests in 30.00s, 5.72MB read
+Requests/sec:     99.99
+Transfer/sec:    195.33KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 6.895ms, rate sampling interval: 28ms
+  Thread calibration: mean lat.: 7.272ms, rate sampling interval: 30ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.14ms    6.69ms  31.23ms   84.51%
+    Req/Sec   101.14     58.31   259.00     61.63%
+  5992 requests in 30.00s, 11.92MB read
+Requests/sec:    199.71
+Transfer/sec:    406.89KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 7.194ms, rate sampling interval: 30ms
+  Thread calibration: mean lat.: 6.605ms, rate sampling interval: 27ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.24ms    5.83ms  27.49ms   84.86%
+    Req/Sec   101.13     58.51   259.00     61.74%
+  5991 requests in 30.00s, 11.83MB read
+Requests/sec:    199.67
+Transfer/sec:    403.82KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 7.466ms, rate sampling interval: 31ms
+  Thread calibration: mean lat.: 7.068ms, rate sampling interval: 29ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.02ms    5.46ms  25.82ms   83.78%
+    Req/Sec   100.96     55.87   250.00     63.33%
+  5992 requests in 30.00s, 11.91MB read
+Requests/sec:    199.72
+Transfer/sec:    406.45KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 7.532ms, rate sampling interval: 30ms
+  Thread calibration: mean lat.: 6.484ms, rate sampling interval: 27ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     6.74ms    5.14ms  23.89ms   84.11%
+    Req/Sec   101.08     59.49   259.00     60.53%
+  5992 requests in 30.00s, 11.78MB read
+Requests/sec:    199.71
+Transfer/sec:    402.14KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 6.958ms, rate sampling interval: 29ms
+  Thread calibration: mean lat.: 6.970ms, rate sampling interval: 28ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.14ms    5.34ms  25.76ms   83.50%
+    Req/Sec   101.04     58.81   250.00     61.56%
+  5992 requests in 30.01s, 11.92MB read
+Requests/sec:    199.70
+Transfer/sec:    406.87KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 8.691ms, rate sampling interval: 35ms
+  Thread calibration: mean lat.: 8.986ms, rate sampling interval: 36ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     9.42ms    8.25ms  39.81ms   86.34%
+    Req/Sec   150.76     62.73   314.00     64.88%
+  8959 requests in 30.00s, 17.10MB read
+Requests/sec:    298.62
+Transfer/sec:    583.48KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 8.296ms, rate sampling interval: 34ms
+  Thread calibration: mean lat.: 8.868ms, rate sampling interval: 36ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.44ms    7.06ms  34.24ms   86.82%
+    Req/Sec   150.88     62.34   305.00     70.85%
+  8960 requests in 30.00s, 17.13MB read
+Requests/sec:    298.66
+Transfer/sec:    584.63KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 9.829ms, rate sampling interval: 40ms
+  Thread calibration: mean lat.: 8.648ms, rate sampling interval: 38ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.99ms    7.85ms  39.52ms   86.70%
+    Req/Sec   150.86     59.31   289.00     67.91%
+  8960 requests in 30.00s, 17.13MB read
+Requests/sec:    298.64
+Transfer/sec:    584.59KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 8.927ms, rate sampling interval: 37ms
+  Thread calibration: mean lat.: 9.055ms, rate sampling interval: 37ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.52ms    6.79ms  31.58ms   85.11%
+    Req/Sec   151.04     62.82   305.00     61.06%
+  8959 requests in 30.00s, 17.13MB read
+Requests/sec:    298.62
+Transfer/sec:    584.59KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 8.676ms, rate sampling interval: 35ms
+  Thread calibration: mean lat.: 9.249ms, rate sampling interval: 40ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.53ms    6.88ms  32.53ms   85.06%
+    Req/Sec   150.98     59.09   294.00     68.07%
+  8959 requests in 30.00s, 17.13MB read
+Requests/sec:    298.60
+Transfer/sec:    584.80KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 12.697ms, rate sampling interval: 53ms
+  Thread calibration: mean lat.: 16.405ms, rate sampling interval: 74ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    13.48ms   11.64ms  53.85ms   85.94%
+    Req/Sec   199.63     53.62   342.00     70.70%
+  11913 requests in 30.00s, 22.41MB read
+Requests/sec:    397.07
+Transfer/sec:    764.73KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 15.081ms, rate sampling interval: 66ms
+  Thread calibration: mean lat.: 10.704ms, rate sampling interval: 46ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    10.54ms    8.50ms  40.22ms   85.73%
+    Req/Sec   199.79     56.47   347.00     68.44%
+  11911 requests in 30.00s, 22.43MB read
+Requests/sec:    397.00
+Transfer/sec:    765.52KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 13.276ms, rate sampling interval: 58ms
+  Thread calibration: mean lat.: 13.026ms, rate sampling interval: 58ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    12.31ms   11.16ms  54.75ms   86.72%
+    Req/Sec   199.07     55.29   327.00     66.42%
+  11913 requests in 30.00s, 22.46MB read
+Requests/sec:    397.04
+Transfer/sec:    766.36KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 13.618ms, rate sampling interval: 57ms
+  Thread calibration: mean lat.: 14.279ms, rate sampling interval: 65ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    12.41ms   11.21ms  54.05ms   87.35%
+    Req/Sec   199.02     52.86   321.00     68.65%
+  11913 requests in 30.00s, 22.41MB read
+Requests/sec:    397.06
+Transfer/sec:    764.71KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 13.046ms, rate sampling interval: 57ms
+  Thread calibration: mean lat.: 13.139ms, rate sampling interval: 56ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    11.64ms    9.68ms  45.73ms   85.72%
+    Req/Sec   199.34     55.50   333.00     70.40%
+  11915 requests in 30.00s, 22.44MB read
+Requests/sec:    397.13
+Transfer/sec:    765.95KB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 19.106ms, rate sampling interval: 78ms
+  Thread calibration: mean lat.: 23.401ms, rate sampling interval: 92ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    51.92ms   67.02ms 295.93ms   86.37%
+    Req/Sec   249.95     46.38   354.00     70.61%
+  14934 requests in 30.00s, 27.60MB read
+Requests/sec:    497.79
+Transfer/sec:      0.92MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 34.359ms, rate sampling interval: 166ms
+  Thread calibration: mean lat.: 21.055ms, rate sampling interval: 95ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    29.98ms   26.84ms 117.44ms   77.02%
+    Req/Sec   250.99     39.56   340.00     71.21%
+  14964 requests in 30.00s, 27.68MB read
+Requests/sec:    498.80
+Transfer/sec:      0.92MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 23.440ms, rate sampling interval: 115ms
+  Thread calibration: mean lat.: 23.564ms, rate sampling interval: 91ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    40.31ms   37.72ms 160.26ms   84.66%
+    Req/Sec   250.89     40.01   333.00     70.66%
+  14962 requests in 30.00s, 27.70MB read
+Requests/sec:    498.73
+Transfer/sec:      0.92MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 39.831ms, rate sampling interval: 183ms
+  Thread calibration: mean lat.: 48.419ms, rate sampling interval: 182ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    31.71ms   31.63ms 139.13ms   85.73%
+    Req/Sec   250.36     31.77   318.00     71.10%
+  14980 requests in 30.00s, 27.69MB read
+Requests/sec:    499.29
+Transfer/sec:      0.92MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 29.047ms, rate sampling interval: 132ms
+  Thread calibration: mean lat.: 34.890ms, rate sampling interval: 148ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    25.74ms   24.28ms 116.74ms   87.39%
+    Req/Sec   250.07     38.49   333.00     70.63%
+  14958 requests in 30.00s, 27.71MB read
+Requests/sec:    498.61
+Transfer/sec:      0.92MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 352.028ms, rate sampling interval: 939ms
+  Thread calibration: mean lat.: 348.893ms, rate sampling interval: 1222ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.25s   403.51ms   2.18s    61.52%
+    Req/Sec   278.81     14.39   303.00     72.97%
+  16741 requests in 30.00s, 30.98MB read
+Requests/sec:    557.99
+Transfer/sec:      1.03MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 410.132ms, rate sampling interval: 1153ms
+  Thread calibration: mean lat.: 208.394ms, rate sampling interval: 640ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency   963.94ms  225.32ms   1.33s    67.11%
+    Req/Sec   287.54     13.53   325.00     77.08%
+  17106 requests in 30.00s, 31.83MB read
+Requests/sec:    570.23
+Transfer/sec:      1.06MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 368.479ms, rate sampling interval: 1112ms
+  Thread calibration: mean lat.: 334.897ms, rate sampling interval: 935ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.01s   253.58ms   1.65s    70.02%
+    Req/Sec   284.92     13.14   307.00     73.68%
+  16966 requests in 30.00s, 31.53MB read
+Requests/sec:    565.52
+Transfer/sec:      1.05MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 483.367ms, rate sampling interval: 1729ms
+  Thread calibration: mean lat.: 425.627ms, rate sampling interval: 1432ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.72s   445.12ms   2.70s    65.23%
+    Req/Sec   275.62      9.94   303.00     83.33%
+  16442 requests in 30.00s, 30.55MB read
+Requests/sec:    548.03
+Transfer/sec:      1.02MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 708.793ms, rate sampling interval: 2439ms
+  Thread calibration: mean lat.: 545.209ms, rate sampling interval: 1673ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     2.08s   537.97ms   2.96s    61.55%
+    Req/Sec   270.68      6.62   284.00     84.21%
+  16136 requests in 30.00s, 30.02MB read
+Requests/sec:    537.87
+Transfer/sec:      1.00MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1304.764ms, rate sampling interval: 4558ms
+  Thread calibration: mean lat.: 1259.666ms, rate sampling interval: 4448ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     4.86s     1.35s    7.39s    58.73%
+    Req/Sec   268.12      6.55   282.00     75.00%
+  15988 requests in 30.00s, 29.71MB read
+Requests/sec:    532.97
+Transfer/sec:      0.99MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1183.035ms, rate sampling interval: 4259ms
+  Thread calibration: mean lat.: 1192.014ms, rate sampling interval: 4100ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     4.59s     1.29s    6.88s    56.70%
+    Req/Sec   269.50      4.80   278.00     87.50%
+  16107 requests in 30.00s, 29.98MB read
+Requests/sec:    536.89
+Transfer/sec:      1.00MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1186.911ms, rate sampling interval: 4280ms
+  Thread calibration: mean lat.: 1268.242ms, rate sampling interval: 4403ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     4.82s     1.36s    7.52s    59.75%
+    Req/Sec   265.38      3.20   270.00     62.50%
+  15910 requests in 30.00s, 29.57MB read
+Requests/sec:    530.33
+Transfer/sec:      0.99MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1023.297ms, rate sampling interval: 3645ms
+  Thread calibration: mean lat.: 1379.420ms, rate sampling interval: 4714ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     4.50s     1.18s    6.54s    58.56%
+    Req/Sec   276.33      6.98   286.00     55.56%
+  16410 requests in 30.00s, 30.51MB read
+Requests/sec:    547.00
+Transfer/sec:      1.02MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1204.873ms, rate sampling interval: 4163ms
+  Thread calibration: mean lat.: 980.836ms, rate sampling interval: 3446ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     4.36s     1.18s    6.30s    58.06%
+    Req/Sec   276.11      7.46   291.00     66.67%
+  16489 requests in 30.00s, 30.63MB read
+Requests/sec:    549.61
+Transfer/sec:      1.02MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1662.897ms, rate sampling interval: 5935ms
+  Thread calibration: mean lat.: 1629.495ms, rate sampling interval: 5591ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     6.46s     1.83s    9.67s    56.78%
+    Req/Sec   271.00      6.30   279.00     66.67%
+  16204 requests in 30.00s, 30.10MB read
+Requests/sec:    540.15
+Transfer/sec:      1.00MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1592.045ms, rate sampling interval: 5500ms
+  Thread calibration: mean lat.: 1509.657ms, rate sampling interval: 5287ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     6.07s     1.66s    8.76s    56.86%
+    Req/Sec   281.17      4.06   286.00     83.33%
+  16803 requests in 30.00s, 31.17MB read
+Requests/sec:    560.04
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1506.985ms, rate sampling interval: 5119ms
+  Thread calibration: mean lat.: 1499.857ms, rate sampling interval: 5423ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.77s     1.59s    8.46s    57.61%
+    Req/Sec   287.83      2.79   293.00     66.67%
+  17083 requests in 30.00s, 31.79MB read
+Requests/sec:    569.44
+Transfer/sec:      1.06MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1399.463ms, rate sampling interval: 4833ms
+  Thread calibration: mean lat.: 1623.715ms, rate sampling interval: 5599ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.75s     1.61s    8.40s    58.89%
+    Req/Sec   285.43      4.40   291.00     71.43%
+  17088 requests in 30.00s, 31.79MB read
+Requests/sec:    569.54
+Transfer/sec:      1.06MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1499.406ms, rate sampling interval: 5234ms
+  Thread calibration: mean lat.: 1553.830ms, rate sampling interval: 5386ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     5.88s     1.65s    8.82s    58.37%
+    Req/Sec   284.33      3.59   291.00     83.33%
+  16887 requests in 30.00s, 31.30MB read
+Requests/sec:    562.94
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1960.004ms, rate sampling interval: 6905ms
+  Thread calibration: mean lat.: 2029.479ms, rate sampling interval: 7196ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.01s     2.29s   11.87s    56.33%
+    Req/Sec   268.00      2.45   270.00     75.00%
+  16146 requests in 30.00s, 30.08MB read
+Requests/sec:    538.18
+Transfer/sec:      1.00MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2001.868ms, rate sampling interval: 6868ms
+  Thread calibration: mean lat.: 1875.260ms, rate sampling interval: 6512ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.52s     2.12s   11.12s    57.45%
+    Req/Sec   280.80      4.53   288.00     60.00%
+  16885 requests in 30.00s, 31.34MB read
+Requests/sec:    562.87
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2026.895ms, rate sampling interval: 7172ms
+  Thread calibration: mean lat.: 1879.563ms, rate sampling interval: 6541ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.56s     2.10s   11.29s    57.90%
+    Req/Sec   284.00      4.29   292.00     80.00%
+  16879 requests in 30.00s, 31.32MB read
+Requests/sec:    562.59
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1958.826ms, rate sampling interval: 6725ms
+  Thread calibration: mean lat.: 2001.187ms, rate sampling interval: 6873ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.56s     2.10s   11.32s    58.56%
+    Req/Sec   282.50      1.80   285.00    100.00%
+  16844 requests in 30.00s, 31.22MB read
+Requests/sec:    561.50
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 1937.731ms, rate sampling interval: 6729ms
+  Thread calibration: mean lat.: 1981.363ms, rate sampling interval: 6893ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     7.53s     2.09s   11.21s    58.20%
+    Req/Sec   283.50      1.12   285.00    100.00%
+  16901 requests in 30.00s, 31.41MB read
+Requests/sec:    563.30
+Transfer/sec:      1.05MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2193.386ms, rate sampling interval: 7876ms
+  Thread calibration: mean lat.: 2226.130ms, rate sampling interval: 7815ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.89s     2.57s   13.17s    57.88%
+    Req/Sec   276.75      2.17   280.00     75.00%
+  16657 requests in 30.00s, 30.85MB read
+Requests/sec:    555.21
+Transfer/sec:      1.03MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2040.219ms, rate sampling interval: 7155ms
+  Thread calibration: mean lat.: 2379.281ms, rate sampling interval: 8065ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.52s     2.38s   12.86s    59.36%
+    Req/Sec   290.00      6.40   299.00     75.00%
+  16863 requests in 30.01s, 31.25MB read
+Requests/sec:    562.00
+Transfer/sec:      1.04MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2212.220ms, rate sampling interval: 7729ms
+  Thread calibration: mean lat.: 2180.394ms, rate sampling interval: 7692ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.55s     2.43s   12.65s    58.15%
+    Req/Sec   287.75      1.30   289.00    100.00%
+  17149 requests in 30.00s, 31.92MB read
+Requests/sec:    571.64
+Transfer/sec:      1.06MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2162.016ms, rate sampling interval: 7651ms
+  Thread calibration: mean lat.: 2188.743ms, rate sampling interval: 7716ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.51s     2.40s   12.48s    57.46%
+    Req/Sec   289.50      1.50   291.00    100.00%
+  17201 requests in 30.00s, 32.02MB read
+Requests/sec:    573.35
+Transfer/sec:      1.07MB
+Running 30s test @ http://localhost:8080/wrk2-api/user-timeline/read
+  2 threads and 2 connections
+  Thread calibration: mean lat.: 2228.057ms, rate sampling interval: 7770ms
+  Thread calibration: mean lat.: 2199.050ms, rate sampling interval: 7663ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     8.69s     2.44s   12.78s    58.22%
+    Req/Sec   285.75      4.38   292.00     50.00%
+  17016 requests in 30.00s, 31.56MB read
+Requests/sec:    567.17
+Transfer/sec:      1.05MB
