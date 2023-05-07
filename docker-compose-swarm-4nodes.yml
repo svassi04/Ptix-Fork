@@ -23,7 +23,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     depends_on:
       - jaeger-collector
 
@@ -170,7 +170,7 @@ services:
           cpus: "4"
           memory: 4G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE2}"]
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -509,7 +509,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -529,7 +529,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE3}"]
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
