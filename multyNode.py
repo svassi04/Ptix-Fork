@@ -8,7 +8,7 @@ qpsRate=1
 nodes=2
 output=4
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/runData"):
+for name in glob("./outputs/2_nodes_baseline_user_100_1000qps/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -338,7 +338,7 @@ if (True):
 
 
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/cstateAv"):
+for name in glob("./outputs/2_nodes_baseline_user_100_1000qps/cstateAv"):
     f=open(name, "r")
 data_array1 = []
 for row in csv.reader(f):
@@ -450,13 +450,16 @@ tc1etmp=0
 tc6Av = []
 tc6tmp=0
 s=0
+print(len(c0))
+print(len(c0t))
+
 for q in range(0, nodes):
     for i in range(0,10*output):
         for j in range(0,5):
             s+=1
             l=q*200+i*5+j
-            print(l, " ", c0[l])
-            print(l, " ", c1[l])
+            #print(l, " ", c0[l])
+            #print(l, " ", c1[l])
             #print("\n\n", l)
             c0tmp+=c0[l]
             c1tmp+=c1[l]
@@ -685,7 +688,7 @@ for i in range (0, 1):
 
 
     
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/power"):
+for name in glob("./outputs/2_nodes_baseline_user_100_1000qps/power"):
     f=open(name, "r")
 data_array1 = []
 for row in csv.reader(f):
