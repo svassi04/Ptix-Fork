@@ -354,19 +354,31 @@ c6 = []
 x = []
 j=0
 for i in range(len(data_array1)):
-    if(len(data_array1[i]) == 4):
-        if((float(str(data_array1[i][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i][3]).replace("]",""))>1.00)):
+    if(data_array1[i][0]!="repeat end"):
+        if((float(str(data_array1[i][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i][1]).replace("]",""))>1.00)):
             c0t.append(float(str(data_array1[i][0]).replace("[","").replace(",","")))
-            c1t.append(float(str(data_array1[i][1]).replace(",","")))
-            c1et.append(float(str(data_array1[i][2]).replace(",","")))
-            c6t.append(float(str(data_array1[i][3]).replace("]","")))
+            c1t.append(float(str(data_array1[i][1]).replace(",","").replace("]","")))
+            if(len(data_array1[i]) >= 3):
+                c1et.append(float(str(data_array1[i][2]).replace(",","").replace("]","")))
+            else:
+                c1et.append(float(0))
+            if(len(data_array1[i]) == 4):
+                c6t.append(float(str(data_array1[i][3]).replace("]","")))
+            else: 
+                c6t.append(float(0))
         else:
             x.append(int(int(j)/5+1)*qpsRate*100+j%5*5*qpsRate)
             j+=1
             c0.append(float(str(data_array1[i][0]).replace("[","").replace(",",""))*100.00)
-            c1.append(float(str(data_array1[i][1]).replace(",",""))*100.00)
-            c1e.append(float(str(data_array1[i][2]).replace(",",""))*100.00)
-            tem=float(str(data_array1[i][3]).replace("]",""))
+            c1.append(float(str(data_array1[i][1]).replace(",","").replace("]",""))*100.00)
+            if(len(data_array1[i]) >= 3):
+                c1e.append(float(str(data_array1[i][2]).replace(",","").replace("]",""))*100.00)
+            else:
+                c1e.append(float(0))
+            if(len(data_array1[i]) == 4):
+                tem=float(str(data_array1[i][3]).replace("]",""))
+            else: 
+                tem=0
             if (tem>=0):
                 c6.append(tem*100.00)
             else :
@@ -379,9 +391,9 @@ for i in range(len(data_array1)):
                 c1e.append(float(t)*(1.00+tem))
         
         
-#print(len(data_array1[0]))
-print(len(c0), len(c1), len(c1e), len(c6), "\n")
-#print("c0:",  c0, "\n\nc1:", c1, "\n\nc1e:", c1e, "\n\nc6:", c6)"
+print(len(data_array1[0]))
+#print(len(c0), len(c1), len(c1e), len(c6), "\n")
+#print("c0:",  c0, "\n\nc1:", c1, "\n\nc1e:", c1e, "\n\nc6:", c6)
 #print((x))
 
 # data from https://allisonhorst.github.io/palmerpenguins/
@@ -628,19 +640,34 @@ j=0
 for i in range(0, len(data_array1), 10):
     #print(j)
     for q in range(0,10):
-        if(len(data_array1[i+q]) == 4):
-            if((float(str(data_array1[i+q][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i+q][3]).replace("]",""))>1.00)):
-                tc0t[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
-                tc1t[j]+=(float(str(data_array1[i+q][1]).replace(",","")))
-                tc1et[j]+=(float(str(data_array1[i+q][2]).replace(",","")))
-                tc6t[j]+=(float(str(data_array1[i+q][3]).replace("]","")))
+        if((float(str(data_array1[i+q][0]).replace("[","").replace(",",""))>1.00) or (float(str(data_array1[i+q][1]).replace("]",""))>1.00)):
+            tc0t[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
+            tc1t[j]+=(float(str(data_array1[i+q][1]).replace(",","").replace("]","")))
+            if(len(data_array1[i+q]) >= 3):
+                tc1et[j]+=(float(str(data_array1[i+q][2]).replace(",","").replace("]","")))
             else:
-                tc0[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
-                tc1[j]+=(float(str(data_array1[i+q][1]).replace(",","")))
-                tc1e[j]+=(float(str(data_array1[i+q][2]).replace(",","")))
+                tc1et[j]=(float(0))
+            if(len(data_array1[i+q]) == 4):
+                tc6t[j]+=(float(str(data_array1[i+q][3]).replace("]","")))
+            else: 
+                tc6t[j]=(float(0))
+        else:
+            tc0[j]+=(float(str(data_array1[i+q][0]).replace("[","").replace(",","")))
+            tc1[j]+=(float(str(data_array1[i+q][1]).replace(",","").replace("]","")))
+            if(len(data_array1[i+q]) >= 3):
+                tc1e[j]+=(float(str(data_array1[i+q][2]).replace(",","").replace("]","")))
+            else:
+                tc1e[j]=(float(0))
+            if(len(data_array1[i+q]) == 4):
                 tc6[j]+=(float(str(data_array1[i+q][3]).replace("]","")))
+            else: 
+                tc6[j]=(float(0))
                     
-    print(tc0[j], " ", tc1[j], " ", tc1e[j], " ", tc6[j])
+    #print(tc0[j], " ", tc1[j], " ", tc1e[j], " ", tc6[j])
+    #print(tc0[j])
+    #print(tc1[j])
+    #print(tc1e[j])
+    #print(tc6[j])
     c0t.append(tc0t[j]/5)
     c1t.append(tc1t[j]/5)
     c1et.append(tc1et[j]/5)

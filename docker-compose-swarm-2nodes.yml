@@ -54,7 +54,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: home-timeline-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -111,7 +111,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: media-memcached
     image: memcached
     command:
@@ -126,7 +126,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: media-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -190,7 +190,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: post-storage-memcached
     image: memcached
     command:
@@ -205,7 +205,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: post-storage-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -242,7 +242,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: social-graph-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -257,7 +257,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: social-graph-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -335,7 +335,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: url-shorten-memcached
     image: memcached
     command:
@@ -350,7 +350,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: url-shorten-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -387,7 +387,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-memcached
     image: memcached
     command:
@@ -423,7 +423,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -446,7 +446,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UserService"]
     hostname: user-service
     image: yg397/social-network-microservices:latest
@@ -460,7 +460,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-timeline-mongodb
     image: mongo
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -475,7 +475,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-timeline-redis
     image: redis
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -549,7 +549,7 @@ services:
     image: cassandra:3.9
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
 
 networks:
   default:
