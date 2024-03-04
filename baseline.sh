@@ -4,10 +4,10 @@ export NODE0=$(ssh node0 hostname)
 echo $NODE0
 export NODE1=$(ssh node1 hostname)
 echo $NODE1
-export NODE2=$(ssh node2 hostname)
-echo $NODE2
-export NODE3=$(ssh node3 hostname)
-echo $NODE3
+# export NODE2=$(ssh node2 hostname)
+# echo $NODE2
+# export NODE3=$(ssh node3 hostname)
+# echo $NODE3
 
 for (( i=0 ; i<$1 ; i++ )); 
 do
@@ -21,7 +21,7 @@ do
 	./turbo-boost.sh disable
 	sudo apt-get install msr-tools
 	sudo apt-get install linux-tools-common
-	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo apt-get install linux-tools-4.15.0-204-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 
@@ -43,7 +43,7 @@ else
 	./turbo-boost.sh disable
 	sudo apt-get install msr-tools
 	sudo apt-get install linux-tools-common
-	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo apt-get install linux-tools-4.15.0-204-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 
@@ -60,5 +60,41 @@ done
 
 sleep 5m
 
-ssh node0 "cd Ptix-Fork; chmod u+x scr_4_nodes.sh; ./scr_4_nodes.sh $1"
+for (( i=0 ; i<$1 ; i++ )); 
+do
+    if [ $i -eq 0 ]; then
+	ssh node$i<<EOT
+	cd Ptix-Fork
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
+	#git clone https://github.com/hvolos/mcperf.git
+	sudo modprobe msr
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
+	sudo wrmsr 0x620 0x1414
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable 
+
+	
+EOT
+else
+	
+	ssh node$i<<EOT
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
+	cd Ptix-Fork
+	#git clone https://github.com/hvolos/mcperf.git
+	sudo modprobe msr
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
+	sudo wrmsr 0x620 0x1414 
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
+	
+EOT
+	
+fi
+done
+
+ssh node0 "cd Ptix-Fork; chmod u+x scr.sh; ./scr.sh $1"
 
